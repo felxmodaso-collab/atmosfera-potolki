@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ShieldCheck, Clock, Sparkles, ChevronRight, Phone } from "lucide-react";
 import { COMPANY } from "@/lib/data";
 import { img } from "@/lib/img";
@@ -8,47 +7,20 @@ import { useContactModal } from "./ContactProvider";
 
 export default function Hero() {
   const { open } = useContactModal();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const reveal = () => setVideoReady(true);
-    if (v.readyState >= 2) {
-      reveal();
-    } else {
-      v.addEventListener("loadeddata", reveal);
-      v.addEventListener("canplay", reveal);
-      v.load();
-    }
-    return () => {
-      v.removeEventListener("loadeddata", reveal);
-      v.removeEventListener("canplay", reveal);
-    };
-  }, []);
 
   return (
     <section className="relative pt-32 lg:pt-40 pb-14 lg:pb-20 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
       <div className="absolute inset-0">
-        <img
-          src={img("/images/hero/main.jpg")}
-          alt=""
-          aria-hidden
-          className={`hero-image w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-0" : "opacity-100"}`}
-        />
         <video
-          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
           poster={img("/images/hero/main.jpg")}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
-        >
-          <source src={img("/videos/hero.mp4")} type="video/mp4" />
-        </video>
+          src={img("/videos/hero.mp4")}
+          className="hero-image w-full h-full object-cover"
+        />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.45) 0%, rgba(14,15,17,.15) 45%, rgba(14,15,17,.6) 80%, rgba(14,15,17,.92) 100%)" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,0) 60%)" }} />
       </div>
