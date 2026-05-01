@@ -44,7 +44,7 @@ function Item({ href, bg, icon, label }: { href: string; bg: string; icon: React
       aria-label={label}
     >
       <span
-        className={`text-sm font-medium whitespace-nowrap pl-5 transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
+        className={`text-sm font-medium whitespace-nowrap pl-5 min-w-0 overflow-hidden transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
       >
         {label}
       </span>
