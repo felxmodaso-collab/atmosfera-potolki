@@ -14,10 +14,18 @@ export default function Hero() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const onCanPlay = () => setVideoReady(true);
-    v.addEventListener("loadeddata", onCanPlay);
-    v.addEventListener("error", () => setVideoReady(false));
-    return () => v.removeEventListener("loadeddata", onCanPlay);
+    const reveal = () => setVideoReady(true);
+    if (v.readyState >= 2) {
+      reveal();
+    } else {
+      v.addEventListener("loadeddata", reveal);
+      v.addEventListener("canplay", reveal);
+      v.load();
+    }
+    return () => {
+      v.removeEventListener("loadeddata", reveal);
+      v.removeEventListener("canplay", reveal);
+    };
   }, []);
 
   return (
