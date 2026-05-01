@@ -5,6 +5,8 @@ import { Menu, X, Phone, Calendar } from "lucide-react";
 import { COMPANY, NAV } from "@/lib/data";
 import { useContactModal } from "./ContactProvider";
 
+const COMPACT_NAV = NAV.filter((n) => !["О компании", "Контакты"].includes(n.label));
+
 export default function Header() {
   const { open } = useContactModal();
   const [scrolled, setScrolled] = useState(false);
@@ -32,16 +34,23 @@ export default function Header() {
           <span className={`hidden sm:inline text-[10px] uppercase tracking-[0.2em] transition-colors ${scrolled ? "text-muted" : "text-bg/60"}`}>натяжные потолки</span>
         </Link>
 
-        <nav className={`hidden lg:flex items-center gap-7 text-sm transition-colors ${scrolled ? "text-graphite" : "text-bg/85"}`}>
+        <nav className={`hidden xl:flex items-center gap-6 text-sm transition-colors ${scrolled ? "text-graphite" : "text-bg/85"}`}>
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="ulink hover:text-current transition-colors">
+            <Link key={n.href} href={n.href} className="ulink hover:text-current transition-colors whitespace-nowrap">
+              {n.label}
+            </Link>
+          ))}
+        </nav>
+        <nav className={`hidden lg:flex xl:hidden items-center gap-5 text-sm transition-colors ${scrolled ? "text-graphite" : "text-bg/85"}`}>
+          {COMPACT_NAV.map((n) => (
+            <Link key={n.href} href={n.href} className="ulink hover:text-current transition-colors whitespace-nowrap">
               {n.label}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <a href={`tel:${COMPANY.phoneRaw}`} className={`hidden md:flex items-center gap-2 text-sm font-medium transition-colors ${scrolled ? "text-ink" : "text-bg"}`}>
+          <a href={`tel:${COMPANY.phoneRaw}`} className={`hidden xl:flex items-center gap-2 text-sm font-medium transition-colors whitespace-nowrap ${scrolled ? "text-ink" : "text-bg"}`}>
             <Phone size={16} /> {COMPANY.phone}
           </a>
           <button onClick={() => open("measurer")} className={`btn !py-2.5 !px-4 text-sm ${scrolled ? "btn-primary" : "btn-light"}`}>

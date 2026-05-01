@@ -75,10 +75,10 @@ export default function HeroCalc() {
             <button
               key={f.id}
               onClick={() => setOpts({ ...opts, [f.id]: !active })}
-              className={`flex items-center justify-between gap-3 w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all ${active ? "bg-accent/10 border-accent" : "border-line hover:border-ink/40 bg-bg"}`}
+              className={`flex items-center justify-between gap-3 w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all ${active ? "bg-accent/10 border-accent text-ink" : "border-line hover:border-ink/40 bg-bg text-ink"}`}
             >
-              <span className="flex items-center gap-2.5">
-                <span className={`w-4 h-4 rounded border ${active ? "bg-accent border-accent" : "border-line bg-bg"}`} />
+              <span className="flex items-center gap-2.5 font-medium">
+                <span className={`w-4 h-4 rounded border-2 shrink-0 ${active ? "bg-accent border-accent" : "border-line bg-white"}`} />
                 {f.label}
               </span>
             </button>
