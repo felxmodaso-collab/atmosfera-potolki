@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import Calculator from "@/components/Calculator";
 import { Section, SectionHeader } from "@/components/Section";
 import TypeCard from "@/components/TypeCard";
@@ -7,41 +10,17 @@ import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import FAQList from "@/components/FAQList";
 import Stats from "@/components/Stats";
+import Advantages from "@/components/Advantages";
 import CTABanner from "@/components/CTABanner";
-import { TYPES, PROJECTS, ADVANTAGES, COMPANY } from "@/lib/data";
-import { img } from "@/lib/img";
+import { TYPES, PROJECTS } from "@/lib/data";
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative min-h-[100vh] flex items-end pb-20 pt-32 overflow-hidden">
-        <img
-          src={img("/images/hero/main.jpg")}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          aria-hidden
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(250,248,244,.4) 0%, rgba(250,248,244,.1) 35%, rgba(14,15,17,.5) 100%)" }} />
-        <div className="container-x relative">
-          <div className="max-w-3xl text-bg fade-up">
-            <span className="eyebrow !text-bg/80">с 2014 года · Москва и МО</span>
-            <h1 className="serif text-hero mt-5 mb-6">
-              Натяжной&nbsp;потолок премиум-уровня. <em className="not-italic text-accent">За один день.</em>
-            </h1>
-            <p className="text-lg md:text-xl text-bg/85 mb-9 max-w-2xl leading-relaxed">
-              Полный цикл — от замера до сдачи под ключ. Цена в договоре, гарантия 12 лет, бесшовное полотно до 5,1 м без видимых стыков.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/calculator" className="btn btn-accent !py-4 !px-8 text-base">Рассчитать стоимость</Link>
-              <a href={`tel:${COMPANY.phoneRaw}`} className="btn btn-outline !text-bg !border-bg/60 hover:!bg-bg hover:!text-ink !py-4 !px-8 text-base">
-                {COMPANY.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
+      <Marquee tone="light" />
 
-      <Section className="!pt-16">
+      <Section className="!pt-20 !pb-12 lg:hidden">
         <Stats />
       </Section>
 
@@ -54,7 +33,7 @@ export default function HomePage() {
         <Calculator />
       </Section>
 
-      <Section className="bg-cream/50">
+      <Section className="bg-cream/60">
         <SectionHeader
           eyebrow="Типы потолков"
           title={<>8 фактур <em className="not-italic text-accent">под любой интерьер</em></>}
@@ -71,14 +50,14 @@ export default function HomePage() {
             <div className="eyebrow mb-4">Портфолио</div>
             <h2 className="serif text-h1">Сделанные проекты</h2>
           </div>
-          <Link href="/portfolio" className="btn btn-outline">Все проекты →</Link>
+          <Link href="/portfolio" className="btn btn-outline">Все проекты <ArrowRight size={16} /></Link>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {PROJECTS.slice(0, 6).map((p) => <ProjectCard key={p.id} p={p} />)}
         </div>
       </Section>
 
-      <Section className="bg-cream/50">
+      <Section className="bg-cream/60">
         <SectionHeader
           eyebrow="Как мы работаем"
           title="Полный цикл за 5–7 дней"
@@ -90,20 +69,13 @@ export default function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="Преимущества"
-          title="Почему 3 800+ клиентов выбрали нас"
+          title={<>Почему 3&nbsp;800+ клиентов <em className="not-italic text-accent">выбрали нас</em></>}
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {ADVANTAGES.map((a, i) => (
-            <div key={i} className="card p-7">
-              <div className="serif text-2xl mb-2">{a.title}</div>
-              <p className="text-muted leading-relaxed">{a.text}</p>
-            </div>
-          ))}
-        </div>
+        <Advantages />
       </Section>
 
-      <Section className="bg-cream/50">
-        <SectionHeader eyebrow="Отзывы" title="Что говорят клиенты" />
+      <Section className="bg-cream/60">
+        <SectionHeader eyebrow="Отзывы" title={<>Что говорят <em className="not-italic text-accent">клиенты</em></>} />
         <Testimonials />
       </Section>
 
@@ -111,16 +83,17 @@ export default function HomePage() {
         <SectionHeader eyebrow="FAQ" title="Частые вопросы" />
         <FAQList limit={6} />
         <div className="mt-8 text-center">
-          <Link href="/contacts#faq" className="btn btn-outline">Все вопросы и ответы →</Link>
+          <Link href="/contacts#faq" className="btn btn-outline">Все вопросы и ответы <ArrowRight size={16} /></Link>
         </div>
       </Section>
 
       <Section>
         <CTABanner
-          title="Бесплатный замер за 0 ₽"
+          title={<>Бесплатный замер <em className="not-italic text-gold">за 0 ₽</em></>}
           sub="Замерщик приедет в удобное время. Привезёт каталог фактур, точные размеры комнаты, расчёт по каждому варианту. Без обязательств."
           button="Вызвать замерщика"
           variant="measurer"
+          badge="Сегодня · окно 16:00–22:00"
         />
       </Section>
     </>

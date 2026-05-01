@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ArrowRight, ArrowLeft, Check, Sparkles, Gift } from "lucide-react";
 
 const STEPS = [
   { key: "room",       title: "Какое помещение?",
@@ -36,7 +37,7 @@ export default function Quiz() {
       setAnswers({ ...answers, [cur.key]: next });
     } else {
       setAnswers({ ...answers, [cur.key]: opt });
-      setTimeout(() => setStep((s) => s + 1), 150);
+      setTimeout(() => setStep((s) => s + 1), 180);
     }
   };
 
@@ -48,28 +49,31 @@ export default function Quiz() {
 
   if (done) {
     return (
-      <div className="card p-10 max-w-2xl mx-auto text-center fade-up">
-        <div className="text-6xl mb-4 text-success">✓</div>
+      <div className="card !rounded-3xl p-10 lg:p-14 max-w-2xl mx-auto text-center fade-up relative overflow-hidden">
+        <div className="absolute -top-24 right-0 w-72 h-72 glow-gold opacity-50 pointer-events-none" />
+        <div className="w-20 h-20 rounded-full bg-sage/15 text-sage flex items-center justify-center mx-auto mb-6">
+          <Check size={36} strokeWidth={2} />
+        </div>
         <h3 className="serif text-h2 mb-3">Заявка принята</h3>
-        <p className="text-muted mb-2">
-          Замерщик перезвонит за 15 минут и уточнит время визита.
-        </p>
-        <p className="text-sm text-muted">
-          Скидка 10% по результатам квиза автоматически зафиксирована за вашим номером.
-        </p>
+        <p className="text-muted mb-2">Замерщик перезвонит за 15 минут и уточнит время визита.</p>
+        <div className="badge badge-coral mt-4 inline-flex"><Sparkles size={12} /> Скидка 10% зафиксирована</div>
       </div>
     );
   }
 
   return (
-    <div id="quiz" className="card p-6 md:p-10 max-w-3xl mx-auto fade-up">
-      <div className="flex items-center justify-between mb-6">
-        <div className="eyebrow">Квиз — скидка 10%</div>
+    <div id="quiz" className="card !rounded-3xl p-6 md:p-10 max-w-3xl mx-auto fade-up relative overflow-hidden">
+      <div className="absolute -top-20 -right-10 w-64 h-64 glow-gold opacity-40 pointer-events-none" />
+
+      <div className="flex items-center justify-between mb-5 relative">
+        <div className="flex items-center gap-2">
+          <span className="badge badge-coral"><Gift size={12} /> Скидка 10%</span>
+          <span className="eyebrow !mb-0">Квиз</span>
+        </div>
         <div className="text-sm text-muted">{Math.min(step + 1, total)} / {total}{isContact && " · Контакт"}</div>
       </div>
-      <div className="h-1 bg-line rounded-full mb-8 overflow-hidden">
-        <div className="h-full bg-accent transition-all duration-500" style={{ width: `${progress}%` }} />
-      </div>
+
+      <div className="progress mb-8"><span style={{ width: `${progress}%` }} /></div>
 
       {!isContact ? (
         <>
@@ -84,8 +88,11 @@ export default function Quiz() {
                 <button
                   key={opt}
                   onClick={() => pick(opt)}
-                  className={`text-left px-5 py-4 rounded-xl border transition-all ${active ? "bg-ink text-bg border-ink" : "border-line hover:border-ink"}`}
-                >{opt}</button>
+                  className={`text-left px-5 py-4 rounded-xl border transition-all flex items-center justify-between gap-3 ${active ? "bg-ink text-bg border-ink shadow-soft" : "border-line hover:border-ink/40 bg-bg"}`}
+                >
+                  <span>{opt}</span>
+                  {active && <Check size={16} strokeWidth={2.5} />}
+                </button>
               );
             })}
           </div>
@@ -94,12 +101,12 @@ export default function Quiz() {
               onClick={() => setStep((s) => Math.max(0, s - 1))}
               disabled={step === 0}
               className="btn btn-outline disabled:opacity-30 disabled:cursor-not-allowed"
-            >← Назад</button>
+            ><ArrowLeft size={16} /> Назад</button>
             <button
               onClick={() => setStep((s) => s + 1)}
               disabled={cur.multi ? !((answers[cur.key] as string[])?.length) : !answers[cur.key]}
               className="btn btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
-            >Далее →</button>
+            >Далее <ArrowRight size={16} /></button>
           </div>
         </>
       ) : (
@@ -120,8 +127,8 @@ export default function Quiz() {
             </label>
           </div>
           <div className="flex justify-between mt-6">
-            <button type="button" onClick={() => setStep((s) => s - 1)} className="btn btn-outline">← Назад</button>
-            <button type="submit" disabled={!phone || !agree} className="btn btn-primary disabled:opacity-30">Получить расчёт →</button>
+            <button type="button" onClick={() => setStep((s) => s - 1)} className="btn btn-outline"><ArrowLeft size={16} /> Назад</button>
+            <button type="submit" disabled={!phone || !agree} className="btn btn-coral disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
           </div>
         </form>
       )}
