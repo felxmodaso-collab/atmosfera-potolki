@@ -2,14 +2,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
-import Calculator from "@/components/Calculator";
 import { Section, SectionHeader } from "@/components/Section";
 import TypeCard from "@/components/TypeCard";
 import ProjectCard from "@/components/ProjectCard";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import FAQList from "@/components/FAQList";
-import Stats from "@/components/Stats";
 import Advantages from "@/components/Advantages";
 import CTABanner from "@/components/CTABanner";
 import { TYPES, PROJECTS } from "@/lib/data";
@@ -19,19 +17,6 @@ export default function HomePage() {
     <>
       <Hero />
       <Marquee tone="light" />
-
-      <Section className="!pt-20 !pb-12 lg:hidden">
-        <Stats />
-      </Section>
-
-      <Section id="calculator">
-        <SectionHeader
-          eyebrow="Калькулятор"
-          title={<>Стоимость <em className="not-italic text-accent">за 30 секунд</em></>}
-          sub="Подберите тип потолка и опции — увидите ориентировочную цену сразу. Финальная сумма — после бесплатного замера."
-        />
-        <Calculator />
-      </Section>
 
       <Section className="bg-cream/60">
         <SectionHeader

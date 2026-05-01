@@ -1,78 +1,75 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, Phone, Sparkles, ShieldCheck, Clock, Award } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Clock, Award, Sparkles } from "lucide-react";
 import { COMPANY } from "@/lib/data";
 import { img } from "@/lib/img";
 import { useContactModal } from "./ContactProvider";
+import HeroCalc from "./HeroCalc";
 
 export default function Hero() {
   const { open } = useContactModal();
 
   return (
-    <section className="relative min-h-[100vh] flex items-end overflow-hidden pt-32 pb-12">
+    <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 bg-ink text-bg overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img src={img("/images/hero/main.jpg")} alt="" className="hero-image w-full h-full object-cover" aria-hidden />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="absolute -top-20 -left-20 w-96 h-96 glow-gold opacity-40" />
-        <div className="absolute -bottom-20 right-0 w-[500px] h-[500px] glow-coral opacity-20" />
+        <img src={img("/images/hero/main.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-40 hero-image" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(14,15,17,.92) 0%, rgba(14,15,17,.75) 50%, rgba(14,15,17,.4) 100%)" }} />
       </div>
 
-      <div className="container-x relative z-10 grid lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-end">
-        <div className="text-bg fade-up">
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <span className="badge badge-coral"><Sparkles size={12} /> Скидка 10% по квизу</span>
-            <span className="badge badge-line"><ShieldCheck size={12} /> Гарантия 12 лет</span>
-            <span className="badge badge-line"><Clock size={12} /> Монтаж за 1 день</span>
+      <div className="container-x relative grid lg:grid-cols-[1.15fr_400px] gap-10 lg:gap-16 items-center">
+        <div>
+          <div className="flex flex-wrap items-center gap-2.5 mb-7">
+            <span className="badge badge-coral"><Sparkles size={12} /> Скидка 10% сегодня</span>
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-bg/60">
+              <ShieldCheck size={14} className="text-gold" /> Гарантия 12 лет
+            </span>
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-bg/60">
+              <Clock size={14} className="text-gold" /> Монтаж за 1 день
+            </span>
           </div>
 
-          <h1 className="serif text-mega mb-7">
-            Натяжной&nbsp;потолок<br />
-            <span className="italic text-gold">премиум-уровня</span> —<br />
-            за один день.
+          <h1 className="text-[clamp(2.6rem,6.4vw,6rem)] leading-[0.96] tracking-[-0.025em] font-light mb-7">
+            Натяжной потолок<br />
+            <span className="serif italic text-gold">премиум-уровня</span><br />
+            <span className="font-medium">в Москве и МО</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-bg/80 mb-9 max-w-2xl leading-relaxed">
-            Полный цикл — от замера до сдачи под ключ. Цена&nbsp;в&nbsp;договоре, бесшовное полотно до&nbsp;5,1&nbsp;м, чистый монтаж без пыли и переноса мебели.
+          <p className="text-lg md:text-xl text-bg/75 max-w-2xl mb-9 leading-relaxed">
+            Цена в договоре, бесшовное полотно до 5,1 м, чистый монтаж без пыли и без переноса мебели. Замер бесплатно — даже если потом не закажете.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <Link href="/calculator" className="btn btn-accent !py-4 !px-7 text-base">
-              Рассчитать стоимость <ArrowRight size={18} />
-            </Link>
-            <button onClick={() => open("measurer")} className="btn btn-light !py-4 !px-7 text-base">
-              Замер бесплатно
+          <div className="flex flex-wrap items-center gap-3 mb-10">
+            <button onClick={() => open("measurer")} className="btn btn-accent !py-4 !px-7 text-base">
+              Вызвать замерщика <ArrowRight size={18} />
             </button>
-            <a href={`tel:${COMPANY.phoneRaw}`} className="hidden md:inline-flex items-center gap-2 px-4 text-bg ulink">
-              <Phone size={18} /> {COMPANY.phone}
+            <Link href="/calculator" className="btn !py-4 !px-7 text-base border border-bg/40 text-bg hover:bg-bg hover:text-ink transition">
+              Все типы и цены
+            </Link>
+            <a href={`tel:${COMPANY.phoneRaw}`} className="hidden md:inline-flex items-center gap-2 px-3 ml-2 text-bg ulink">
+              <Phone size={18} className="text-gold" /> {COMPANY.phone}
             </a>
+          </div>
+
+          <div className="grid grid-cols-3 gap-x-6 gap-y-3 max-w-xl pt-7 border-t border-bg/15">
+            <Stat value="11 лет" label="на рынке" />
+            <Stat value="3 800+" label="потолков" />
+            <Stat value="4.9 / 5" label="отзывов" />
           </div>
         </div>
 
-        <aside className="hidden lg:flex flex-col gap-3">
-          <FloatStat icon={<Award size={22} />} value="11 лет" label="на рынке Москвы и МО" tint="accent" />
-          <FloatStat icon={<Sparkles size={22} />} value="3 800+" label="установленных потолков" tint="gold" />
-          <FloatStat icon={<ShieldCheck size={22} />} value="12 лет" label="гарантия на полотно" tint="teal" />
-          <FloatStat icon={<Clock size={22} />} value="4.9 / 5" label="средний рейтинг отзывов" tint="coral" />
-        </aside>
+        <div className="relative">
+          <HeroCalc />
+        </div>
       </div>
     </section>
   );
 }
 
-function FloatStat({ icon, value, label, tint }: { icon: React.ReactNode; value: string; label: string; tint: "accent" | "gold" | "teal" | "coral" }) {
-  const colorMap = {
-    accent: "bg-accent/90",
-    gold: "bg-gold/90",
-    teal: "bg-teal/90",
-    coral: "bg-coral/90",
-  };
+function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="float-tile rounded-2xl p-5 flex items-center gap-4">
-      <div className={`w-12 h-12 rounded-xl ${colorMap[tint]} text-white flex items-center justify-center shrink-0`}>{icon}</div>
-      <div className="min-w-0">
-        <div className="serif text-3xl leading-none">{value}</div>
-        <div className="text-xs uppercase tracking-[0.14em] text-muted mt-1">{label}</div>
-      </div>
+    <div>
+      <div className="serif text-3xl leading-none">{value}</div>
+      <div className="text-[11px] uppercase tracking-[0.16em] text-bg/55 mt-1.5">{label}</div>
     </div>
   );
 }

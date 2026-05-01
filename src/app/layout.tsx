@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
+import StickyWidget from "@/components/StickyWidget";
 import ContactProvider from "@/components/ContactProvider";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <FloatingContact />
+          <StickyWidget />
         </ContactProvider>
       </body>
     </html>
