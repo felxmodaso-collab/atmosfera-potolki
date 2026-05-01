@@ -10,13 +10,13 @@ export default function Hero() {
   const { open } = useContactModal();
 
   return (
-    <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 bg-ink text-bg overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <img src={img("/images/hero/main.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-40 hero-image" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(14,15,17,.92) 0%, rgba(14,15,17,.75) 50%, rgba(14,15,17,.4) 100%)" }} />
+    <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
+      <div className="absolute inset-0">
+        <img src={img("/images/hero/main.jpg")} alt="" aria-hidden className="hero-image w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(14,15,17,.86) 0%, rgba(14,15,17,.55) 50%, rgba(14,15,17,.25) 100%)" }} />
       </div>
 
-      <div className="container-x relative grid lg:grid-cols-[1.15fr_400px] gap-10 lg:gap-16 items-center">
+      <div className="container-x relative z-10 grid lg:grid-cols-[1.15fr_400px] gap-10 lg:gap-16 items-center">
         <div>
           <div className="flex flex-wrap items-center gap-2.5 mb-7">
             <span className="badge badge-coral"><Sparkles size={12} /> Скидка 10% сегодня</span>
