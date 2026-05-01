@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Clock, Sparkles, ChevronRight, Phone } from "lucide-react";
 import { COMPANY } from "@/lib/data";
-import { img } from "@/lib/img";
 import { useContactModal } from "./ContactProvider";
+import HeroVideo from "./HeroVideo";
 
 export default function Hero() {
   const { open } = useContactModal();
@@ -11,16 +11,7 @@ export default function Hero() {
   return (
     <section className="relative pt-32 lg:pt-40 pb-14 lg:pb-20 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={img("/images/hero/main.jpg")}
-          src={img("/videos/hero.mp4")}
-          className="hero-image w-full h-full object-cover"
-        />
+        <HeroVideo />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.45) 0%, rgba(14,15,17,.15) 45%, rgba(14,15,17,.6) 80%, rgba(14,15,17,.92) 100%)" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,0) 60%)" }} />
       </div>
