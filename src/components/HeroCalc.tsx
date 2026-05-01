@@ -30,7 +30,7 @@ export default function HeroCalc() {
   const final = Math.round(total * 0.9);
 
   return (
-    <div className="rounded-3xl bg-bg p-7 md:p-8 shadow-deep relative overflow-hidden">
+    <div className="rounded-3xl bg-bg text-ink p-7 md:p-8 shadow-deep relative overflow-hidden">
       <div className="flex items-center justify-between mb-6">
         <div>
           <div className="serif text-2xl leading-none">Расчёт за 30 секунд</div>
