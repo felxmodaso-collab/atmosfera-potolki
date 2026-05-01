@@ -33,18 +33,22 @@ function Item({ href, bg, icon, label }: { href: string; bg: string; icon: React
   return (
     <a
       href={href}
-      style={{ background: bg, width: hover ? 168 : 48 }}
-      className="flex items-center h-12 text-white rounded-full shadow-deep transition-[width] duration-300 ease-out overflow-hidden will-change-[width] ring-1 ring-white/10"
+      style={{
+        background: bg,
+        width: hover ? 168 : 48,
+        gridTemplateColumns: "1fr 48px",
+      }}
+      className="grid items-center h-12 text-white rounded-full shadow-deep transition-[width] duration-300 ease-out overflow-hidden will-change-[width] ring-1 ring-white/10"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-label={label}
     >
       <span
-        className={`flex-1 text-sm font-medium whitespace-nowrap pl-5 transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
+        className={`text-sm font-medium whitespace-nowrap pl-5 transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
       >
         {label}
       </span>
-      <span className="shrink-0 w-12 h-12 flex items-center justify-center">
+      <span className="w-12 h-12 flex items-center justify-center">
         {icon}
       </span>
     </a>
