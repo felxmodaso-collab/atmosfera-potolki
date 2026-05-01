@@ -19,7 +19,7 @@ export default function CTABanner({ title, sub, button = "Вызвать зам�
       <img src={img(bg)} alt="" aria-hidden />
       <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center relative">
         <div>
-          {badge && <span className="badge badge-coral mb-5 inline-flex">{badge}</span>}
+          {badge && <span className="badge badge-discount mb-5 inline-flex">{badge}</span>}
           <h3 className="serif text-h1 mb-4 max-w-2xl leading-tight">{title}</h3>
           <p className="text-bg/75 max-w-xl leading-relaxed text-lg">{sub}</p>
         </div>

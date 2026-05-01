@@ -88,7 +88,13 @@ export default function ContactsPage() {
 
       <Section className="!pt-0">
         <div className="card !rounded-3xl overflow-hidden grid lg:grid-cols-2">
-          <div className="aspect-[16/10] lg:aspect-auto relative bg-cream">
+          <div className="aspect-[16/10] lg:aspect-auto relative bg-cream overflow-hidden">
+            <img
+              src={img("/images/team/03-showroom.jpg")}
+              alt="Шоурум на Тверской"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.15) 0%, rgba(14,15,17,.55) 100%)" }} />
             <iframe
               title="Карта офиса"
               src="https://yandex.ru/map-widget/v1/?ll=37.605000%2C55.762000&z=15&pt=37.605000,55.762000,pm2blm&l=map"
@@ -96,6 +102,9 @@ export default function ContactsPage() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 pointer-events-none">
+              <span className="badge badge-line backdrop-blur"><MapPin size={12} /> Тверская, 15</span>
+            </div>
           </div>
           <div className="p-8 lg:p-12 grid content-center gap-5">
             <div className="eyebrow">Где мы находимся</div>
