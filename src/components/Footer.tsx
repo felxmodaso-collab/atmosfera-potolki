@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { MessageCircle, Send, Phone, Mail, MapPin, Clock, ShieldCheck, Award, BadgeCheck, CreditCard } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ShieldCheck, Award, BadgeCheck, CreditCard } from "lucide-react";
 import { COMPANY, NAV } from "@/lib/data";
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "./BrandIcons";
 import Marquee from "./Marquee";
 
 export default function Footer() {
@@ -16,9 +17,9 @@ export default function Footer() {
             Премиум-уровень в каждом метре потолка. Цена в договоре, гарантия 12&nbsp;лет, монтаж за 1&nbsp;день. Москва и Московская область.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
-            <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><MessageCircle size={16} /> WhatsApp</a>
-            <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><Send size={16} /> Telegram</a>
-            <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm">MAX</a>
+            <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
+            <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
+            <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
           </div>
         </div>
 

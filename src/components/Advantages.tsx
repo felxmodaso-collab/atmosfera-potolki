@@ -11,19 +11,21 @@ const ITEMS = [
 
 export default function Advantages() {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-line rounded-3xl overflow-hidden border border-line">
-      {ITEMS.map((a, i) => {
-        const Icon = a.icon;
-        return (
-          <div key={i} className="bg-bg p-8 lg:p-9 group hover:bg-cream/50 transition-colors">
-            <div className="w-12 h-12 mb-6 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">
-              <Icon size={22} strokeWidth={1.5} />
+    <div className="bg-white rounded-3xl border border-line shadow-card overflow-hidden">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line">
+        {ITEMS.map((a, i) => {
+          const Icon = a.icon;
+          const rowBreak = i >= 3 ? "lg:border-t lg:border-line" : "";
+          return (
+            <div key={i} className={`p-8 lg:p-10 group hover:bg-cream/40 transition-colors relative ${rowBreak}`}>
+              <div className="absolute top-0 left-0 w-12 h-px bg-accent" />
+              <div className="text-accent mb-5"><Icon size={28} strokeWidth={1.4} /></div>
+              <div className="serif text-2xl mb-3 leading-tight">{a.title}</div>
+              <p className="text-muted leading-relaxed text-sm">{a.text}</p>
             </div>
-            <div className="serif text-2xl mb-3">{a.title}</div>
-            <p className="text-muted leading-relaxed text-sm">{a.text}</p>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

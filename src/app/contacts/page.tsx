@@ -2,7 +2,8 @@
 import { Section, SectionHeader } from "@/components/Section";
 import FAQList from "@/components/FAQList";
 import { COMPANY } from "@/lib/data";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
+import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/BrandIcons";
 import { img } from "@/lib/img";
 import { useState } from "react";
 
@@ -50,9 +51,9 @@ export default function ContactsPage() {
 
             <h4 className="text-xs uppercase tracking-[0.2em] text-muted mb-4">Мессенджеры</h4>
             <div className="flex flex-wrap gap-2">
-              <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><MessageCircle size={16} /> WhatsApp</a>
-              <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><Send size={16} /> Telegram</a>
-              <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm">MAX</a>
+              <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
+              <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
+              <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
             </div>
           </div>
 

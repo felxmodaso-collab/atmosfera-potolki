@@ -15,10 +15,12 @@ export default function Marquee({ tone = "light" }: { tone?: "light" | "dark" | 
   const cls =
     tone === "dark" ? "bg-ink text-bg border-y border-white/10" :
     tone === "accent" ? "bg-accent text-white" :
-    "bg-cream/70 text-graphite border-y border-line";
+    "bg-white text-graphite border-y border-line";
 
   return (
-    <div className={`marquee py-4 ${cls}`}>
+    <div className={`marquee py-4 relative ${cls}`}>
+      <span className="absolute left-0 right-0 top-0 hairline-gold" />
+      <span className="absolute left-0 right-0 bottom-0 hairline-gold" />
       <div className="marquee-track">
         {[0, 1].map((round) => (
           <div key={round} className="flex items-center gap-12 shrink-0">

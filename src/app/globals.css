@@ -101,6 +101,21 @@ input:focus, textarea:focus, select:focus {
 }
 
 .divider { height: 1px; background: #E2DDD3; }
+.hairline-gold { background: linear-gradient(90deg, transparent, #D4A857 30%, #D4A857 70%, transparent); height: 1px; }
+.bg-soft { background: #FFFFFF; }
+.bg-alt  { background: #FBF9F5; }
+.bg-cream-2 { background: #EFE9DD; }
+.tape {
+  position: relative;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 18px, rgba(184,148,106,.06) 18px 19px);
+}
+.spotlight {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212,168,87,.10) 0%, rgba(212,168,87,0) 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(184,148,106,.08) 0%, rgba(184,148,106,0) 60%),
+    #FAF8F4;
+}
 
 .no-scroll { overflow: hidden; }
 
