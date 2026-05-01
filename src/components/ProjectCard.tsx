@@ -4,38 +4,38 @@ import { ArrowUpRight, X, MapPin, Ruler, Tag } from "lucide-react";
 import type { Project } from "@/lib/data";
 import { img } from "@/lib/img";
 
-export default function ProjectCard({ p }: { p: Project }) {
+export default function ProjectCard({ p, featured = false }: { p: Project; featured?: boolean }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setOpen(true)} className="card group text-left w-full relative">
-        <span className="badge badge-line absolute top-4 left-4 z-10">{p.area}</span>
-        <span className="badge badge-ink absolute top-4 right-4 z-10">{p.budget}</span>
-
-        <div className="aspect-[3/2] overflow-hidden bg-cream media-zoom relative">
-          <img src={img(p.image)} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="absolute bottom-4 left-4 right-4 text-bg opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-            <div className="text-xs uppercase tracking-[0.14em] text-bg/70 mb-1">Подробнее</div>
-            <div className="serif text-xl flex items-center justify-between">{p.title}<ArrowUpRight size={20} /></div>
+      <button onClick={() => setOpen(true)} className={`group text-left relative overflow-hidden rounded-2xl ${featured ? "lg:col-span-2 lg:row-span-2" : ""}`}>
+        <div className={`overflow-hidden bg-cream relative ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+          <img src={img(p.image)} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
+          <div className="absolute top-4 left-4 flex gap-2">
+            <span className="badge badge-line backdrop-blur">{p.area}</span>
           </div>
-        </div>
-        <div className="p-5">
-          <h3 className="serif text-xl mb-1.5">{p.title}</h3>
-          <div className="text-sm text-muted">{p.type}</div>
+          <div className="absolute bottom-5 left-5 right-5 text-bg">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-gold mb-1.5">{p.type}</div>
+            <div className={`serif ${featured ? "text-3xl lg:text-4xl" : "text-xl"} mb-1 flex items-center justify-between gap-3`}>
+              <span>{p.title}</span>
+              <span className="w-9 h-9 rounded-full bg-bg/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all"><ArrowUpRight size={16} /></span>
+            </div>
+            <div className="text-sm text-bg/70 tabular">{p.budget}</div>
+          </div>
         </div>
       </button>
 
       {open && (
         <div className="fixed inset-0 z-[90] p-4 flex items-center justify-center" style={{ background: "rgba(14,15,17,.78)", backdropFilter: "blur(8px)" }} onClick={() => setOpen(false)}>
           <div className="card max-w-5xl w-full max-h-[92vh] overflow-auto relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-bg/90 backdrop-blur flex items-center justify-center hover:bg-bg" aria-label="Закрыть">
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-bg/95 backdrop-blur flex items-center justify-center hover:bg-bg" aria-label="Закрыть">
               <X size={18} />
             </button>
             <div className="grid md:grid-cols-2">
               <div className="relative">
-                <span className="badge badge-coral absolute top-4 left-4 z-10">Общий план</span>
+                <span className="badge badge-line absolute top-4 left-4 z-10 backdrop-blur">Общий план</span>
                 <img src={img(p.image)} alt={p.title} className="w-full h-full object-cover aspect-[3/2]" />
               </div>
               <div className="relative">

@@ -2,6 +2,8 @@
 import { Section, SectionHeader } from "@/components/Section";
 import FAQList from "@/components/FAQList";
 import { COMPANY } from "@/lib/data";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ExternalLink } from "lucide-react";
+import { img } from "@/lib/img";
 import { useState } from "react";
 
 export default function ContactsPage() {
@@ -19,44 +21,60 @@ export default function ContactsPage() {
 
   return (
     <>
-      <Section className="!pt-32">
-        <SectionHeader
-          eyebrow="Контакты"
-          title="Свяжитесь любым удобным способом"
-          sub="Перезваниваем за 15 минут в рабочее время. Замер — бесплатно. Без напоминаний и спама после."
-        />
+      <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={img("/images/team/03-showroom.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-35" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
+        </div>
+        <div className="container-x relative">
+          <div className="eyebrow eyebrow-light mb-5">Контакты</div>
+          <h1 className="serif text-hero max-w-3xl mb-6">
+            Свяжитесь любым <em className="not-italic text-gold">удобным способом</em>
+          </h1>
+          <p className="text-lg md:text-xl text-bg/75 max-w-2xl leading-relaxed">
+            Перезваниваем за 15 минут в рабочее время. Замер — бесплатно. Без напоминаний и спама после.
+          </p>
+        </div>
+      </section>
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          <div className="card p-8 lg:p-10">
+      <Section>
+        <div className="grid lg:grid-cols-2 gap-5">
+          <div className="card !rounded-3xl p-8 lg:p-10">
             <h3 className="serif text-2xl mb-6">Связаться сейчас</h3>
-            <ul className="space-y-4 mb-8">
-              <ContactItem label="Телефон" value={COMPANY.phone} href={`tel:${COMPANY.phoneRaw}`} />
-              <ContactItem label="Email" value={COMPANY.email} href={`mailto:${COMPANY.email}`} />
-              <ContactItem label="Адрес" value={COMPANY.address} />
-              <ContactItem label="Часы работы" value={COMPANY.hours} />
+            <ul className="space-y-5 mb-8">
+              <Row icon={<Phone size={18} />} label="Телефон" value={COMPANY.phone} href={`tel:${COMPANY.phoneRaw}`} />
+              <Row icon={<Mail size={18} />}  label="Email" value={COMPANY.email} href={`mailto:${COMPANY.email}`} />
+              <Row icon={<MapPin size={18} />} label="Адрес" value={COMPANY.address} />
+              <Row icon={<Clock size={18} />}  label="Часы работы" value={COMPANY.hours} />
             </ul>
 
-            <h4 className="text-sm uppercase tracking-[0.18em] text-muted mb-4">Мессенджеры</h4>
-            <div className="flex flex-wrap gap-3">
-              <a href={COMPANY.whatsapp} className="btn btn-accent !py-3">WhatsApp</a>
-              <a href={COMPANY.telegram} className="btn btn-accent !py-3">Telegram</a>
-              <a href={COMPANY.max} className="btn btn-accent !py-3">MAX</a>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-muted mb-4">Мессенджеры</h4>
+            <div className="flex flex-wrap gap-2">
+              <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><MessageCircle size={16} /> WhatsApp</a>
+              <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><Send size={16} /> Telegram</a>
+              <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm">MAX</a>
             </div>
           </div>
 
-          <div className="card p-8 lg:p-10">
+          <div className="card !rounded-3xl p-8 lg:p-10">
             <h3 className="serif text-2xl mb-6">Написать сообщение</h3>
             {sent ? (
-              <div className="text-center py-10">
-                <div className="text-6xl text-success mb-3">✓</div>
+              <div className="text-center py-12">
+                <div className="text-6xl text-sage mb-3">✓</div>
                 <h4 className="serif text-xl mb-2">Сообщение отправлено</h4>
                 <p className="text-muted">Свяжемся в ближайшее время.</p>
               </div>
             ) : (
-              <form onSubmit={submit} className="space-y-3">
-                <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} />
-                <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(e.target.value)} />
-                <textarea placeholder="Сообщение (тип помещения, площадь, вопросы)" rows={5} value={msg} onChange={(e) => setMsg(e.target.value)} />
+              <form onSubmit={submit} className="space-y-5">
+                <Field label="Ваше имя">
+                  <input type="text" placeholder="Анна" value={name} onChange={(e) => setName(e.target.value)} />
+                </Field>
+                <Field label="Телефон" required>
+                  <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(e.target.value)} />
+                </Field>
+                <Field label="Сообщение (необязательно)">
+                  <textarea placeholder="Тип помещения, площадь, вопросы" rows={4} value={msg} onChange={(e) => setMsg(e.target.value)} />
+                </Field>
                 <label className="flex items-start gap-3 text-sm text-muted py-2">
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} style={{ width: "18px", height: "18px", flexShrink: 0, marginTop: "2px" }} />
                   <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</a></span>
@@ -68,39 +86,59 @@ export default function ContactsPage() {
         </div>
       </Section>
 
-      <Section id="faq" className="bg-cream/50">
-        <SectionHeader eyebrow="FAQ" title="Частые вопросы" />
-        <FAQList />
-      </Section>
-
-      <Section>
-        <SectionHeader title="Где мы находимся" />
-        <div className="card overflow-hidden">
-          <div className="aspect-[16/7] bg-cream relative flex items-center justify-center">
+      <Section className="!pt-0">
+        <div className="card !rounded-3xl overflow-hidden grid lg:grid-cols-2">
+          <div className="aspect-[16/10] lg:aspect-auto relative bg-cream">
             <iframe
-              title="Карта"
-              src="https://yandex.ru/map-widget/v1/?ll=37.605000%2C55.762000&z=15&pt=37.605000,55.762000,pm2blm"
-              className="w-full h-full border-0"
+              title="Карта офиса"
+              src="https://yandex.ru/map-widget/v1/?ll=37.605000%2C55.762000&z=15&pt=37.605000,55.762000,pm2blm&l=map"
+              className="absolute inset-0 w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-          <div className="p-6 grid sm:grid-cols-3 gap-4 text-sm">
-            <div><div className="text-muted">Адрес</div><div>{COMPANY.address}</div></div>
-            <div><div className="text-muted">Метро</div><div>Тверская / Пушкинская / Чеховская</div></div>
-            <div><div className="text-muted">Парковка</div><div>Бесплатно для клиентов</div></div>
+          <div className="p-8 lg:p-12 grid content-center gap-5">
+            <div className="eyebrow">Где мы находимся</div>
+            <div className="serif text-h2">Шоурум в центре Москвы</div>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3"><MapPin size={16} className="text-accent mt-0.5 shrink-0" /> {COMPANY.address}</li>
+              <li className="flex items-start gap-3"><Clock size={16} className="text-accent mt-0.5 shrink-0" /> {COMPANY.hours}</li>
+              <li className="text-muted">Метро: Тверская / Пушкинская / Чеховская — 5 минут пешком. Бесплатная парковка для клиентов на территории БЦ.</li>
+            </ul>
+            <a href="https://yandex.ru/maps/?text=Москва%20Тверская%2015" target="_blank" rel="noreferrer" className="btn btn-outline self-start">
+              Открыть в Яндекс.Картах <ExternalLink size={14} />
+            </a>
           </div>
         </div>
+      </Section>
+
+      <Section id="faq" className="bg-cream/40">
+        <SectionHeader eyebrow="FAQ" title="Частые вопросы" />
+        <FAQList />
       </Section>
     </>
   );
 }
 
-function ContactItem({ label, value, href }: { label: string; value: string; href?: string }) {
+function Row({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) {
   return (
-    <li className="flex flex-col">
-      <span className="text-xs uppercase tracking-[0.18em] text-muted mb-0.5">{label}</span>
-      {href ? <a href={href} className="text-lg hover:text-accent transition">{value}</a> : <span className="text-lg">{value}</span>}
+    <li className="flex items-start gap-4">
+      <span className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">{icon}</span>
+      <div className="flex flex-col">
+        <span className="text-xs uppercase tracking-[0.18em] text-muted mb-0.5">{label}</span>
+        {href ? <a href={href} className="text-lg hover:text-accent transition">{value}</a> : <span className="text-lg">{value}</span>}
+      </div>
     </li>
+  );
+}
+
+function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <div className="text-xs uppercase tracking-[0.18em] text-muted mb-2">
+        {label} {required && <span className="text-coral">*</span>}
+      </div>
+      {children}
+    </label>
   );
 }

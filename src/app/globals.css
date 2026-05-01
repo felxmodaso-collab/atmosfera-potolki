@@ -21,6 +21,7 @@ body {
 }
 
 .serif { font-family: "Cormorant Garamond", serif; }
+.tabular { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 
 .btn {
   display: inline-flex;
@@ -44,6 +45,12 @@ body {
 .btn-accent:hover { background: #8C6E47; box-shadow: 0 12px 28px -10px rgba(184,148,106,.6); }
 .btn-coral { background: #D8554A; color: #fff; }
 .btn-coral:hover { background: #B23E34; box-shadow: 0 12px 28px -10px rgba(216,85,74,.5); }
+.btn-gold  { background: #D4A857; color: #1d1410; }
+.btn-gold:hover { background: #BF9543; box-shadow: 0 12px 28px -10px rgba(212,168,87,.5); }
+.btn-wa   { background: #25D366; color: #fff; }
+.btn-wa:hover { background: #1ebd5a; }
+.btn-tg   { background: #2AABEE; color: #fff; }
+.btn-tg:hover { background: #1d96d6; }
 .btn-light { background: #FAF8F4; color: #0E0F11; }
 .btn-light:hover { background: #fff; }
 
@@ -120,6 +127,7 @@ input:focus, textarea:focus, select:focus {
 }
 .badge-coral { background: #D8554A; color: #fff; }
 .badge-gold  { background: #D4A857; color: #1d1410; }
+.badge-discount { background: linear-gradient(135deg, #D4A857, #B8946A); color: #1d1410; box-shadow: 0 1px 0 rgba(255,255,255,.4) inset; }
 .badge-teal  { background: #2C7A7B; color: #fff; }
 .badge-sage  { background: #6B8E7F; color: #fff; }
 .badge-ink   { background: #0E0F11; color: #FAF8F4; }

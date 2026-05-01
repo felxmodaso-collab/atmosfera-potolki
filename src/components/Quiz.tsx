@@ -56,7 +56,7 @@ export default function Quiz() {
         </div>
         <h3 className="serif text-h2 mb-3">Заявка принята</h3>
         <p className="text-muted mb-2">Замерщик перезвонит за 15 минут и уточнит время визита.</p>
-        <div className="badge badge-coral mt-4 inline-flex"><Sparkles size={12} /> Скидка 10% зафиксирована</div>
+        <div className="badge badge-discount mt-4 inline-flex"><Sparkles size={12} /> Скидка 10% зафиксирована</div>
       </div>
     );
   }
@@ -67,7 +67,7 @@ export default function Quiz() {
 
       <div className="flex items-center justify-between mb-5 relative">
         <div className="flex items-center gap-2">
-          <span className="badge badge-coral"><Gift size={12} /> Скидка 10%</span>
+          <span className="badge badge-discount"><Gift size={12} /> Скидка 10%</span>
           <span className="eyebrow !mb-0">Квиз</span>
         </div>
         <div className="text-sm text-muted">{Math.min(step + 1, total)} / {total}{isContact && " · Контакт"}</div>
@@ -128,7 +128,7 @@ export default function Quiz() {
           </div>
           <div className="flex justify-between mt-6">
             <button type="button" onClick={() => setStep((s) => s - 1)} className="btn btn-outline"><ArrowLeft size={16} /> Назад</button>
-            <button type="submit" disabled={!phone || !agree} className="btn btn-coral disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
+            <button type="submit" disabled={!phone || !agree} className="btn btn-gold disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
           </div>
         </form>
       )}

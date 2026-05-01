@@ -1,31 +1,29 @@
 "use client";
-import { useState } from "react";
-import { MessageCircle, Send, Phone, X, Plus } from "lucide-react";
-import { COMPANY } from "@/lib/data";
-import { useContactModal } from "./ContactProvider";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { ArrowUp } from "lucide-react";
 
 export default function FloatingContact() {
-  const { open } = useContactModal();
-  const [expanded, setExpanded] = useState(false);
+  const pathname = usePathname();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (pathname?.startsWith("/privacy")) { setShow(false); return; }
+    const onScroll = () => setShow(window.scrollY > 800);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
+
+  if (!show) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
-      {expanded && (
-        <div className="flex flex-col items-end gap-2 fade-up">
-          <a href={COMPANY.whatsapp} className="btn btn-primary !py-2.5 shadow-soft text-sm"><MessageCircle size={16} /> WhatsApp</a>
-          <a href={COMPANY.telegram} className="btn btn-primary !py-2.5 shadow-soft text-sm"><Send size={16} /> Telegram</a>
-          <a href={COMPANY.max} className="btn btn-primary !py-2.5 shadow-soft text-sm">MAX</a>
-          <button onClick={() => { setExpanded(false); open("callback"); }} className="btn btn-primary !py-2.5 shadow-soft text-sm">Заказать звонок</button>
-          <a href={`tel:${COMPANY.phoneRaw}`} className="btn btn-primary !py-2.5 shadow-soft text-sm"><Phone size={16} /> Позвонить</a>
-        </div>
-      )}
-      <button
-        onClick={() => setExpanded((v) => !v)}
-        className="btn btn-accent shadow-deep !w-14 !h-14 !p-0 !rounded-full"
-        aria-label={expanded ? "Закрыть контакты" : "Связаться"}
-      >
-        {expanded ? <X size={22} /> : <Plus size={22} />}
-      </button>
-    </div>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-ink text-bg shadow-deep hover:bg-graphite transition flex items-center justify-center"
+      aria-label="Наверх"
+    >
+      <ArrowUp size={18} />
+    </button>
   );
 }

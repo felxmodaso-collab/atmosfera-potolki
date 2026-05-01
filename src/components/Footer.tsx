@@ -16,9 +16,9 @@ export default function Footer() {
             Премиум-уровень в каждом метре потолка. Цена в договоре, гарантия 12&nbsp;лет, монтаж за 1&nbsp;день. Москва и Московская область.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
-            <a href={COMPANY.whatsapp} className="btn btn-accent !py-2.5 text-sm"><MessageCircle size={16} /> WhatsApp</a>
-            <a href={COMPANY.telegram} className="btn btn-accent !py-2.5 text-sm"><Send size={16} /> Telegram</a>
-            <a href={COMPANY.max} className="btn btn-accent !py-2.5 text-sm">MAX</a>
+            <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><MessageCircle size={16} /> WhatsApp</a>
+            <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><Send size={16} /> Telegram</a>
+            <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm">MAX</a>
           </div>
         </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
           <h4 className="text-xs uppercase tracking-[0.2em] text-bg/45 mb-5">Навигация</h4>
           <ul className="space-y-2.5 text-sm">
             {NAV.map((n) => (
-              <li key={n.href}><Link href={n.href} className="text-bg/85 hover:text-accent transition-colors">{n.label}</Link></li>
+              <li key={n.href}><Link href={n.href} className="text-bg/85 hover:text-gold transition-colors">{n.label}</Link></li>
             ))}
             <li className="pt-2"><Link href="/privacy" className="text-bg/55 hover:text-bg text-xs">Политика конфиденциальности</Link></li>
           </ul>
@@ -35,10 +35,10 @@ export default function Footer() {
         <div className="lg:col-span-4">
           <h4 className="text-xs uppercase tracking-[0.2em] text-bg/45 mb-5">Контакты</h4>
           <ul className="space-y-3.5 text-sm">
-            <li className="flex items-start gap-3"><Phone size={16} className="text-accent mt-0.5 shrink-0" /><a href={`tel:${COMPANY.phoneRaw}`} className="text-bg/90 hover:text-bg">{COMPANY.phone}</a></li>
-            <li className="flex items-start gap-3"><Mail  size={16} className="text-accent mt-0.5 shrink-0" /><a href={`mailto:${COMPANY.email}`} className="text-bg/90 hover:text-bg">{COMPANY.email}</a></li>
-            <li className="flex items-start gap-3"><MapPin size={16} className="text-accent mt-0.5 shrink-0" /><span className="text-bg/85">{COMPANY.address}</span></li>
-            <li className="flex items-start gap-3"><Clock size={16} className="text-accent mt-0.5 shrink-0" /><span className="text-bg/85">{COMPANY.hours}</span></li>
+            <li className="flex items-start gap-3"><Phone  size={16} className="text-gold mt-0.5 shrink-0" /><a href={`tel:${COMPANY.phoneRaw}`} className="text-bg/90 hover:text-bg">{COMPANY.phone}</a></li>
+            <li className="flex items-start gap-3"><Mail   size={16} className="text-gold mt-0.5 shrink-0" /><a href={`mailto:${COMPANY.email}`} className="text-bg/90 hover:text-bg">{COMPANY.email}</a></li>
+            <li className="flex items-start gap-3"><MapPin size={16} className="text-gold mt-0.5 shrink-0" /><span className="text-bg/85">{COMPANY.address}</span></li>
+            <li className="flex items-start gap-3"><Clock  size={16} className="text-gold mt-0.5 shrink-0" /><span className="text-bg/85">{COMPANY.hours}</span></li>
           </ul>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function Footer() {
 function Cert({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-bg/5 border border-bg/10">
-      <span className="text-accent">{icon}</span> {label}
+      <span className="text-gold">{icon}</span> {label}
     </span>
   );
 }

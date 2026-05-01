@@ -105,7 +105,7 @@ export default function Calculator() {
         <div className="serif text-5xl mb-1 leading-none">{final.toLocaleString("ru")} ₽</div>
         <div className="flex items-center gap-2 text-sm text-bg/70 mb-6 mt-2">
           <span className="line-through">{total.toLocaleString("ru")} ₽</span>
-          <span className="badge badge-coral"><Sparkles size={11} /> -10%</span>
+          <span className="badge badge-discount"><Sparkles size={11} /> -10%</span>
         </div>
         <div className="space-y-2 text-sm border-t border-bg/15 pt-4 mb-6">
           <Row label="Площадь" value={`${area} м²`} />
