@@ -19,10 +19,10 @@ export default function StickyWidget() {
   if (!show) return null;
 
   return (
-    <div className="hidden lg:flex fixed top-1/2 -translate-y-1/2 right-0 z-30 flex-col gap-2">
-      <Item href={COMPANY.whatsapp}        bg="#25D366" icon={<WhatsAppIcon size={20} />} label="WhatsApp" />
-      <Item href={COMPANY.telegram}        bg="#2AABEE" icon={<TelegramIcon size={20} />} label="Telegram" />
-      <Item href={COMPANY.max}             bg="#B8946A" icon={<MaxIcon size={20} />}      label="MAX" />
+    <div className="hidden lg:flex fixed top-1/2 -translate-y-1/2 right-3 z-30 flex-col gap-2.5">
+      <Item href={COMPANY.whatsapp}        bg="#25D366" icon={<WhatsAppIcon size={22} />} label="WhatsApp" />
+      <Item href={COMPANY.telegram}        bg="#2AABEE" icon={<TelegramIcon size={22} />} label="Telegram" />
+      <Item href={COMPANY.max}             bg="#B8946A" icon={<MaxIcon size={22} />}      label="MAX" />
       <Item href={`tel:${COMPANY.phoneRaw}`} bg="#0E0F11" icon={<PhoneIcon size={20} />}   label="Звонок" />
     </div>
   );
@@ -30,22 +30,21 @@ export default function StickyWidget() {
 
 function Item({ href, bg, icon, label }: { href: string; bg: string; icon: React.ReactNode; label: string }) {
   const [hover, setHover] = useState(false);
-  const expanded = hover;
   return (
     <a
       href={href}
-      style={{ background: bg, width: expanded ? 168 : 44 }}
-      className="flex items-center h-11 text-white rounded-l-xl shadow-soft transition-[width] duration-300 ease-out overflow-hidden will-change-[width]"
+      style={{ background: bg, width: hover ? 168 : 48 }}
+      className="flex items-center h-12 text-white rounded-full shadow-deep transition-[width] duration-300 ease-out overflow-hidden will-change-[width] ring-1 ring-white/10"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-label={label}
     >
       <span
-        className={`flex-1 text-sm font-medium whitespace-nowrap pl-4 transition-opacity duration-200 ${expanded ? "opacity-100 delay-100" : "opacity-0"}`}
+        className={`flex-1 text-sm font-medium whitespace-nowrap pl-5 transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
       >
         {label}
       </span>
-      <span className="shrink-0 w-11 h-11 flex items-center justify-center">
+      <span className="shrink-0 w-12 h-12 flex items-center justify-center">
         {icon}
       </span>
     </a>
