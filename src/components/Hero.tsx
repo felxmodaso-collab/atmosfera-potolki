@@ -18,7 +18,7 @@ export default function Hero() {
           playsInline
           preload="auto"
           poster={img("/images/hero/main.jpg")}
-          src="https://cdn.jsdelivr.net/gh/felxmodaso-collab/atmosfera-potolki@main/public/videos/hero.mp4"
+          src={img("/videos/hero.mp4")}
           className="hero-image w-full h-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.45) 0%, rgba(14,15,17,.15) 45%, rgba(14,15,17,.6) 80%, rgba(14,15,17,.92) 100%)" }} />
