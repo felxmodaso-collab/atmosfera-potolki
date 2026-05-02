@@ -94,38 +94,38 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Центральный CTA-кластер — 3 кнопки */}
+        {/* Центральный CTA-кластер — 3 кнопки. «Активная» = на этой странице. */}
         <div className="hidden lg:flex items-center gap-2 flex-1 justify-center">
-          <Link
-            href="/services"
-            className={`group flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
-              dark
-                ? "bg-bg text-ink hover:bg-gold"
-                : "bg-ink text-bg hover:bg-gold hover:text-ink"
-            }`}
-          >
-            <LayoutGrid size={16} /> Услуги
-          </Link>
-          <button
-            onClick={() => open("lead")}
-            className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium border transition-all ${
-              dark
-                ? "border-bg/30 text-bg hover:bg-bg/10"
-                : "border-line bg-bg text-ink hover:border-ink/40"
-            }`}
-          >
-            <ClipboardCheck size={16} /> Оставить заявку
-          </button>
-          <Link
-            href="/calculator"
-            className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium border transition-all ${
-              dark
-                ? "border-bg/30 text-bg hover:bg-bg/10"
-                : "border-line bg-bg text-ink hover:border-ink/40"
-            }`}
-          >
-            <Calculator size={16} /> Калькулятор
-          </Link>
+          {(() => {
+            const isServices = pathname?.startsWith("/services");
+            const isCalculator = pathname?.startsWith("/calculator");
+            const filledCls = dark ? "bg-bg text-ink hover:bg-gold" : "bg-ink text-bg hover:bg-gold hover:text-ink";
+            const outlineCls = dark ? "border-bg/30 text-bg hover:bg-bg/10 border" : "border-line bg-bg text-ink hover:border-ink/40 border";
+            return (
+              <>
+                <Link
+                  href="/services"
+                  aria-current={isServices ? "page" : undefined}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${isServices ? filledCls : outlineCls}`}
+                >
+                  <LayoutGrid size={16} /> Услуги
+                </Link>
+                <button
+                  onClick={() => open("lead")}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${outlineCls}`}
+                >
+                  <ClipboardCheck size={16} /> Оставить заявку
+                </button>
+                <Link
+                  href="/calculator"
+                  aria-current={isCalculator ? "page" : undefined}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${isCalculator ? filledCls : outlineCls}`}
+                >
+                  <Calculator size={16} /> Калькулятор
+                </Link>
+              </>
+            );
+          })()}
         </div>
 
         {/* Правый кластер — телефон */}
