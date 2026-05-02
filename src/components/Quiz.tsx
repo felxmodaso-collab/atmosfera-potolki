@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Check, Sparkles, Gift } from "lucide-react";
 import MockDisclaimer from "./MockDisclaimer";
+import { formatPhone, isPhoneValid } from "@/lib/phone";
 
 const STEPS = [
   { key: "room",       title: "Какое помещение?",
@@ -123,7 +124,7 @@ export default function Quiz() {
           <p className="text-muted mb-6">Зафиксируем скидку 10%, перезвоним за 15 минут.</p>
           <div className="space-y-3">
             <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} />
-            <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} inputMode="tel" />
             <label className="flex items-start gap-3 text-sm text-muted py-2">
               <input
                 type="checkbox"
@@ -136,7 +137,7 @@ export default function Quiz() {
           </div>
           <div className="flex justify-between mt-6">
             <button type="button" onClick={() => setStep((s) => s - 1)} className="btn btn-outline"><ArrowLeft size={16} /> Назад</button>
-            <button type="submit" disabled={!phone || !agree} className="btn btn-gold disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
+            <button type="submit" disabled={!isPhoneValid(phone) || !agree} className="btn btn-gold disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
           </div>
           <MockDisclaimer className="mt-4" />
         </form>

@@ -16,6 +16,12 @@ export default function CookieBanner() {
     }
   }, []);
 
+  useEffect(() => {
+    if (show) document.body.classList.add("cookies-pending");
+    else document.body.classList.remove("cookies-pending");
+    return () => document.body.classList.remove("cookies-pending");
+  }, [show]);
+
   if (!show) return null;
 
   const accept = () => {
@@ -27,7 +33,7 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label="Согласие на использование cookies"
-      className="fixed bottom-3 left-3 right-3 lg:left-auto lg:right-6 lg:bottom-6 lg:max-w-sm z-[80] float-tile rounded-2xl p-4 lg:p-5 fade-up"
+      className="fixed bottom-3 left-3 right-3 lg:left-auto lg:right-6 lg:bottom-6 lg:max-w-sm z-[95] float-tile rounded-2xl p-4 lg:p-5 fade-up"
     >
       <p className="text-xs leading-relaxed text-ink/85 mb-3">
         Cookies для аналитики. Продолжая, вы соглашаетесь с{" "}

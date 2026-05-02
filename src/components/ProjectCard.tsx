@@ -1,12 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, X, MapPin, Ruler, Tag } from "lucide-react";
 import type { Project } from "@/lib/data";
 import { img } from "@/lib/img";
 import Picture from "./Picture";
+import { useFocusTrap } from "@/lib/focusTrap";
 
 export default function ProjectCard({ p, featured = false }: { p: Project; featured?: boolean }) {
   const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useFocusTrap(panelRef, open);
 
   useEffect(() => {
     if (!open) return;
@@ -42,7 +45,7 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
 
       {open && (
         <div role="dialog" aria-modal="true" aria-label={p.title} className="fixed inset-0 z-[90] p-4 flex items-center justify-center" style={{ background: "rgba(14,15,17,.78)", backdropFilter: "blur(8px)" }} onClick={() => setOpen(false)}>
-          <div className="max-w-5xl w-full max-h-[92vh] overflow-auto relative bg-bg rounded-2xl shadow-deep border border-line text-ink" onClick={(e) => e.stopPropagation()}>
+          <div ref={panelRef} className="max-w-5xl w-full max-h-[92vh] overflow-auto relative bg-bg rounded-2xl shadow-deep border border-line text-ink" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setOpen(false)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-bg/95 backdrop-blur flex items-center justify-center hover:bg-bg shadow-soft border border-line" aria-label="Закрыть">
               <X size={18} className="text-ink" />
             </button>

@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import MockDisclaimer from "./MockDisclaimer";
+import { useFocusTrap } from "@/lib/focusTrap";
+import { formatPhone, isPhoneValid } from "@/lib/phone";
 
 type Variant = "lead" | "callback" | "measurer";
 const TITLES: Record<Variant, { title: string; sub: string; cta: string }> = {
@@ -12,10 +14,12 @@ const TITLES: Record<Variant, { title: string; sub: string; cta: string }> = {
 
 export default function ContactModal({ variant, onClose }: { variant: Variant; onClose: () => void }) {
   const cfg = TITLES[variant];
+  const panelRef = useRef<HTMLDivElement>(null);
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [agree, setAgree] = useState(true);
   const [sent, setSent] = useState(false);
+  useFocusTrap(panelRef, true);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +34,7 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
       onClick={onClose}
     >
       <div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label={cfg.title}
@@ -53,7 +58,7 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
             <p className="text-muted mb-6 text-sm">{cfg.sub}</p>
             <form onSubmit={submit} className="space-y-3">
               <input type="text" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} />
-              <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} inputMode="tel" />
               <label className="flex items-start gap-3 text-sm text-muted py-2">
                 <input
                   type="checkbox"
@@ -67,7 +72,7 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
                   <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link>
                 </span>
               </label>
-              <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>{cfg.cta}</button>
+              <button type="submit" className="btn btn-primary w-full" disabled={!isPhoneValid(phone) || !agree}>{cfg.cta}</button>
               <MockDisclaimer className="mt-3" />
             </form>
           </>

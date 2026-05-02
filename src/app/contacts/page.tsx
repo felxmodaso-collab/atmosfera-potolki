@@ -8,6 +8,7 @@ import { img } from "@/lib/img";
 import { useState } from "react";
 import Link from "next/link";
 import MockDisclaimer from "@/components/MockDisclaimer";
+import { formatPhone, isPhoneValid } from "@/lib/phone";
 
 export default function ContactsPage() {
   const [phone, setPhone] = useState("");
@@ -91,7 +92,7 @@ export default function ContactsPage() {
                   <input type="text" placeholder="Анна" value={name} onChange={(e) => setName(e.target.value)} />
                 </Field>
                 <Field label="Телефон" required>
-                  <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  <input type="tel" placeholder="+7 (___) ___-__-__" required value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} inputMode="tel" />
                 </Field>
                 <Field label="Сообщение (необязательно)">
                   <textarea placeholder="Тип помещения, площадь, вопросы" rows={4} value={msg} onChange={(e) => setMsg(e.target.value)} />
@@ -100,7 +101,7 @@ export default function ContactsPage() {
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} style={{ width: "18px", height: "18px", flexShrink: 0, marginTop: "2px" }} />
                   <span>Согласен на обработку персональных данных в соответствии с <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link></span>
                 </label>
-                <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>Отправить сообщение</button>
+                <button type="submit" className="btn btn-primary w-full" disabled={!isPhoneValid(phone) || !agree}>Отправить сообщение</button>
                 <MockDisclaimer className="mt-3" />
               </form>
             )}

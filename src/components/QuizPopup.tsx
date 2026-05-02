@@ -178,6 +178,7 @@ export default function QuizPopup() {
     return (
       <button
         onClick={open}
+        data-floating="quiz"
         className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 z-[80] flex items-center gap-2 pl-3.5 pr-5 py-3 rounded-full bg-ink text-bg shadow-deep hover:bg-graphite transition-all fade-up"
       >
         <span className="w-7 h-7 rounded-full bg-gold text-ink flex items-center justify-center">
@@ -194,6 +195,7 @@ export default function QuizPopup() {
       <div
         role="dialog"
         aria-label="Расчёт со скидкой"
+        data-floating="quiz"
         className="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-[80] w-[min(360px,calc(100vw-2rem))] rounded-2xl bg-ink text-bg shadow-deep overflow-hidden fade-up"
       >
         <div
@@ -225,7 +227,8 @@ export default function QuizPopup() {
       role="dialog"
       aria-modal="false"
       aria-label="Квиз — расчёт со скидкой 10%"
-      className="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-[80] w-[min(420px,calc(100vw-2rem))] max-h-[min(640px,calc(100vh-7rem))] flex flex-col rounded-2xl bg-bg shadow-deep overflow-hidden border border-line fade-up"
+      data-floating="quiz"
+      className="fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-[80] w-[min(420px,calc(100vw-2rem))] max-h-[min(640px,100dvh-7rem)] flex flex-col rounded-2xl bg-bg shadow-deep overflow-hidden border border-line fade-up"
     >
       <div className="flex items-center justify-between gap-3 px-5 py-3.5 bg-ink text-bg">
         <div className="flex items-center gap-2.5 min-w-0">

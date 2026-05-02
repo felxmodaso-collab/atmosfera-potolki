@@ -53,6 +53,23 @@ export default function Hero() {
         </aside>
       </div>
 
+      {/* Mobile mini-calc CTA: упрощённая версия HeroCalc для <lg */}
+      <Link
+        href="/calculator"
+        className="lg:hidden container-x relative z-10 mt-8 flex items-center justify-between gap-3 px-5 py-4 rounded-2xl bg-bg/[0.06] border border-bg/15 backdrop-blur text-bg/90 hover:bg-bg/[0.1] transition"
+      >
+        <div className="flex items-center gap-3">
+          <span className="w-10 h-10 rounded-full bg-gold text-ink flex items-center justify-center shrink-0">
+            <Sparkles size={16} />
+          </span>
+          <div className="leading-tight">
+            <div className="text-sm font-medium">Расчёт за 30 секунд</div>
+            <div className="text-xs text-bg/60">+ скидка 10% за квиз</div>
+          </div>
+        </div>
+        <ChevronRight size={18} className="text-bg/60" />
+      </Link>
+
       <svg
         className="absolute bottom-0 left-0 right-0 w-full block z-10 pointer-events-none"
         viewBox="0 0 1440 64"

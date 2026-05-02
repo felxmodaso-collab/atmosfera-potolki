@@ -130,6 +130,17 @@ input:focus, textarea:focus, select:focus {
 
 .no-scroll { overflow: hidden; }
 
+/* Mobile bottom-right cluster: пока cookie-баннер виден, скрываем плавающие триггеры,
+   которые конкурируют за ту же зону экрана */
+@media (max-width: 1023px) {
+  body.cookies-pending [data-floating="quiz"],
+  body.cookies-pending [data-floating="back-to-top"] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+}
+
 /* Reduced-motion preferences — отключить декоративные анимации */
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
@@ -331,7 +342,7 @@ input:focus, textarea:focus, select:focus {
   right: -10px; bottom: -10px;
   font-size: 160px; line-height: 1;
   color: rgba(184,148,106,.06);
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display), Georgia, serif;
   pointer-events: none;
   user-select: none;
 }

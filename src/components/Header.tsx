@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useFocusTrap } from "@/lib/focusTrap";
 import {
   Menu, X, Phone, MapPin, Clock, ShieldCheck, FileSignature,
   LayoutGrid, ClipboardCheck, Calculator,
@@ -16,6 +17,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(!isHome);
   const [stripCollapsed, setStripCollapsed] = useState(!isHome);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  useFocusTrap(menuRef, menuOpen);
 
   useEffect(() => {
     if (!isHome) {
@@ -183,7 +186,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div role="dialog" aria-modal="true" aria-label="Меню" className="fixed inset-0 z-50 bg-bg overflow-y-auto" onClick={() => setMenuOpen(false)}>
+        <div ref={menuRef} role="dialog" aria-modal="true" aria-label="Меню" className="fixed inset-0 z-50 bg-bg overflow-y-auto" onClick={() => setMenuOpen(false)}>
           <div className="container-x py-6 flex items-center justify-between">
             <span className="serif text-2xl">АТМОСФЕРА</span>
             <button onClick={() => setMenuOpen(false)} className="w-10 h-10 rounded-full border border-line flex items-center justify-center" aria-label="Закрыть"><X size={18} /></button>

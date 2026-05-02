@@ -20,6 +20,7 @@ export default function FloatingContact() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      data-floating="back-to-top"
       className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-ink text-bg shadow-deep hover:bg-graphite transition flex items-center justify-center"
       aria-label="Наверх"
     >
