@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Check, Sparkles, Gift } from "lucide-react";
+import MockDisclaimer from "./MockDisclaimer";
 
 const STEPS = [
   { key: "room",       title: "Какое помещение?",
@@ -30,6 +31,11 @@ export default function Quiz() {
   const total = STEPS.length;
   const progress = Math.round(((step + 1) / (total + 1)) * 100);
   const isContact = step === STEPS.length;
+  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (advanceTimer.current) clearTimeout(advanceTimer.current);
+  }, []);
 
   const pick = (opt: string) => {
     if (cur.multi) {
@@ -38,7 +44,8 @@ export default function Quiz() {
       setAnswers({ ...answers, [cur.key]: next });
     } else {
       setAnswers({ ...answers, [cur.key]: opt });
-      setTimeout(() => setStep((s) => s + 1), 180);
+      if (advanceTimer.current) clearTimeout(advanceTimer.current);
+      advanceTimer.current = setTimeout(() => setStep((s) => s + 1), 180);
     }
   };
 
@@ -131,6 +138,7 @@ export default function Quiz() {
             <button type="button" onClick={() => setStep((s) => s - 1)} className="btn btn-outline"><ArrowLeft size={16} /> Назад</button>
             <button type="submit" disabled={!phone || !agree} className="btn btn-gold disabled:opacity-30">Получить расчёт <ArrowRight size={16} /></button>
           </div>
+          <MockDisclaimer className="mt-4" />
         </form>
       )}
     </div>

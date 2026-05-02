@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import MockDisclaimer from "./MockDisclaimer";
 
 type Variant = "lead" | "callback" | "measurer";
 const TITLES: Record<Variant, { title: string; sub: string; cta: string }> = {
@@ -29,6 +30,9 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
       onClick={onClose}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={cfg.title}
         className="card w-full max-w-md p-8 fade-up"
         onClick={(e) => e.stopPropagation()}
       >
@@ -64,6 +68,7 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
                 </span>
               </label>
               <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>{cfg.cta}</button>
+              <MockDisclaimer className="mt-3" />
             </form>
           </>
         )}

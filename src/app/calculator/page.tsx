@@ -7,6 +7,15 @@ export const metadata = {
   title: { absolute: "Калькулятор · Стоимость потолка — АТМОСФЕРА" },
   description: "Рассчитайте стоимость натяжного потолка онлайн за 30 секунд. Точная цена — после бесплатного замера.",
   alternates: { canonical: "/calculator/" },
+  openGraph: {
+    title: "Калькулятор стоимости натяжного потолка — АТМОСФЕРА",
+    description: "Live-расчёт за 30 секунд. Скидка 10% при заявке через квиз. Финальная цена — в договоре после замера.",
+    url: "/calculator/",
+  },
+  twitter: {
+    title: "Калькулятор натяжного потолка — за 30 секунд",
+    description: "Скидка 10% при заявке через квиз.",
+  },
 };
 
 export default function CalculatorPage() {

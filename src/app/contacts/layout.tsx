@@ -4,6 +4,15 @@ export const metadata: Metadata = {
   title: "Контакты · Шоурум на Тверской",
   description: "Телефон, email, адрес шоурума на Тверской. WhatsApp, Telegram, Яндекс.Карты, форма заявки. Перезваниваем за 15 минут.",
   alternates: { canonical: "/contacts/" },
+  openGraph: {
+    title: "Контакты — АТМОСФЕРА · Шоурум на Тверской 15",
+    description: "Перезваниваем за 15 минут. Замер 0 ₽. WhatsApp, Telegram, Яндекс.Карты, форма заявки.",
+    url: "/contacts/",
+  },
+  twitter: {
+    title: "Контакты АТМОСФЕРА · Шоурум на Тверской",
+    description: "Перезваниваем за 15 минут. Замер 0 ₽.",
+  },
 };
 
 export default function ContactsLayout({ children }: { children: React.ReactNode }) {

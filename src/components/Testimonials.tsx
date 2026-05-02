@@ -46,14 +46,14 @@ export default function Testimonials() {
         <a href={SOURCE_LINKS["Яндекс.Карты"]} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-ink transition-colors">
           <span className="font-semibold tabular text-ink">4.9 / 5</span>
           <span>·</span>
-          <span>247 отзывов на Яндекс.Картах</span>
+          <span>отзывы на Яндекс.Картах</span>
           <ExternalLink size={12} />
         </a>
         <span className="hidden md:inline text-muted/40">·</span>
         <a href={SOURCE_LINKS["2GIS"]} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-ink transition-colors">
           <span className="font-semibold tabular text-ink">4.9</span>
           <span>·</span>
-          <span>89 отзывов на 2GIS</span>
+          <span>отзывы на 2GIS</span>
           <ExternalLink size={12} />
         </a>
       </div>

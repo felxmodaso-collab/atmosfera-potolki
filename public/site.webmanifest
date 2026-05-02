@@ -1,0 +1,15 @@
+{
+  "name": "АТМОСФЕРА — натяжные потолки",
+  "short_name": "АТМОСФЕРА",
+  "description": "Натяжные потолки премиум-уровня в Москве и МО. Гарантия 12 лет, монтаж за 1 день.",
+  "start_url": "/atmosfera-potolki/",
+  "scope": "/atmosfera-potolki/",
+  "display": "standalone",
+  "background_color": "#FAF8F4",
+  "theme_color": "#0E0F11",
+  "lang": "ru",
+  "icons": [
+    { "src": "/atmosfera-potolki/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/atmosfera-potolki/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

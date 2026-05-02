@@ -7,6 +7,7 @@ import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/BrandIcons";
 import { img } from "@/lib/img";
 import { useState } from "react";
 import Link from "next/link";
+import MockDisclaimer from "@/components/MockDisclaimer";
 
 export default function ContactsPage() {
   const [phone, setPhone] = useState("");
@@ -47,7 +48,7 @@ export default function ContactsPage() {
             </div>
             <div>
               <div className="text-2xl md:text-3xl font-light leading-none">4.9/5</div>
-              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">247 отзывов</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">средний рейтинг</div>
             </div>
             <div>
               <div className="text-2xl md:text-3xl font-light leading-none">Пн–Вс</div>
@@ -100,6 +101,7 @@ export default function ContactsPage() {
                   <span>Согласен на обработку персональных данных в соответствии с <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link></span>
                 </label>
                 <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>Отправить сообщение</button>
+                <MockDisclaimer className="mt-3" />
               </form>
             )}
           </div>

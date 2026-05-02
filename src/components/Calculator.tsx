@@ -4,7 +4,9 @@ import { Sparkles, Check } from "lucide-react";
 import { TYPES, ROOM_PRESETS, PRICE_OPTIONS } from "@/lib/data";
 import { useContactModal } from "./ContactProvider";
 
-const VISIBLE_OPT_IDS = ["led-cove", "led-rgb", "spot", "spot-led", "chandelier", "moisture"];
+const VISIBLE_OPT_IDS = ["led-cove", "led-rgb", "spot", "spot-led", "chandelier", "transition", "moisture", "demount"];
+
+const PRICE_FN_DEMOUNT = (a: number) => a * 250;
 const PRICE_FN: Record<string, (area: number, perimeter: number) => number> = {
   "led-cove":   (_a, p) => p * 1200,
   "led-rgb":    (_a, p) => p * 1800,
@@ -13,6 +15,7 @@ const PRICE_FN: Record<string, (area: number, perimeter: number) => number> = {
   "chandelier": ()      => 1200,
   "moisture":   (a)     => a * 180,
   "transition": (_a, p) => p * 2100,
+  "demount":    (a)     => PRICE_FN_DEMOUNT(a),
 };
 
 export default function Calculator() {

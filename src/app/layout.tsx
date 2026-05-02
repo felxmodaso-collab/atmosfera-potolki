@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Spectral, Manrope } from "next/font/google";
 import "./globals.css";
@@ -46,6 +46,7 @@ export const metadata: Metadata = {
     icon: FAVICON,
     apple: APPLE_ICON,
   },
+  manifest: `${BASE_PATH}/site.webmanifest`,
   alternates: { canonical: SITE_URL + "/" },
   openGraph: {
     type: "website",
@@ -66,6 +67,15 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAF8F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0F11" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 const localBusinessJsonLd = {
@@ -104,7 +114,7 @@ const localBusinessJsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "247",
+    reviewCount: "8",
     bestRating: "5",
   },
   hasOfferCatalog: {
