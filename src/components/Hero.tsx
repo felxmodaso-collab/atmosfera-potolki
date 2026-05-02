@@ -9,7 +9,7 @@ export default function Hero() {
   const { open } = useContactModal();
 
   return (
-    <section className="relative pt-32 lg:pt-40 pb-14 lg:pb-24 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
+    <section className="relative pt-36 lg:pt-52 pb-14 lg:pb-24 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
       <div className="absolute inset-0">
         <HeroVideo />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.45) 0%, rgba(14,15,17,.15) 45%, rgba(14,15,17,.6) 80%, rgba(14,15,17,.92) 100%)" }} />
