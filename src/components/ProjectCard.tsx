@@ -10,19 +10,19 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
   return (
     <>
       <button onClick={() => setOpen(true)} className={`group text-left relative overflow-hidden rounded-2xl ${featured ? "lg:col-span-2 lg:row-span-2" : ""}`}>
-        <div className={`overflow-hidden bg-cream relative ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
-          <img src={img(p.image)} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
-          <div className="absolute top-4 left-4 flex gap-2">
+        <div className={`overflow-hidden bg-cream relative w-full h-full ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+          <img src={img(p.image)} alt={p.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent pointer-events-none" />
+          <div className="absolute top-4 left-4 flex gap-2 z-10">
             <span className="badge badge-line backdrop-blur">{p.area}</span>
           </div>
-          <div className="absolute bottom-5 left-5 right-5 text-bg">
-            <div className="text-[11px] uppercase tracking-[0.18em] text-gold mb-1.5">{p.type}</div>
-            <div className={`serif ${featured ? "text-3xl lg:text-4xl" : "text-xl"} mb-1 leading-[1.15] pb-1 flex items-end justify-between gap-3`}>
-              <span className="block">{p.title}</span>
-              <span className="w-9 h-9 shrink-0 rounded-full bg-bg/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all"><ArrowUpRight size={16} /></span>
+          <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-10 text-bg flex flex-col">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-gold mb-2">{p.type}</div>
+            <div className={`serif ${featured ? "text-3xl lg:text-4xl" : "text-xl"} leading-[1.25] mb-2 flex items-start justify-between gap-3`}>
+              <span className="block flex-1 min-w-0">{p.title}</span>
+              <span className="w-9 h-9 shrink-0 rounded-full bg-bg/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all mt-1"><ArrowUpRight size={16} /></span>
             </div>
-            <div className="text-sm text-bg/70 tabular">{p.budget}</div>
+            <div className="text-sm text-bg/80 tabular">{p.budget}</div>
           </div>
         </div>
       </button>

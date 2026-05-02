@@ -22,12 +22,10 @@ export default function Hero() {
             <span className="badge badge-discount"><Sparkles size={12} /> Скидка 10% при заявке сегодня</span>
           </div>
 
-          <h1 className="text-[clamp(2.6rem,6vw,5.4rem)] leading-[0.96] tracking-[-0.025em] font-light mb-7">
-            Натяжной потолок
-            <br />
-            <span className="serif italic text-gold font-normal">премиум-уровня</span>
-            <br />
-            <span className="font-medium">в Москве и МО</span>
+          <h1 className="text-[clamp(2.6rem,6vw,5.4rem)] leading-[1.02] tracking-[-0.025em] font-light mb-7">
+            <span className="block">Натяжной потолок</span>
+            <span className="serif italic text-gold font-normal block">премиум-уровня</span>
+            <span className="font-medium block">в Москве и МО</span>
           </h1>
 
           <p className="text-lg md:text-xl text-bg/75 max-w-xl mb-8 leading-relaxed">
