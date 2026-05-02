@@ -4,7 +4,7 @@ import FAQList from "@/components/FAQList";
 import { COMPANY } from "@/lib/data";
 import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/BrandIcons";
-import { img } from "@/lib/img";
+import Picture from "@/components/Picture";
 import { useState } from "react";
 import Link from "next/link";
 import MockDisclaimer from "@/components/MockDisclaimer";
@@ -27,7 +27,7 @@ export default function ContactsPage() {
     <>
       <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <img src={img("/images/team/03-showroom.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-35" />
+          <Picture src="/images/team/03-showroom.jpg" alt="" loading="eager" className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">
@@ -112,9 +112,10 @@ export default function ContactsPage() {
       <Section className="!pt-0">
         <div className="card !rounded-3xl overflow-hidden grid lg:grid-cols-2">
           <div className="aspect-[16/10] lg:aspect-auto relative bg-cream overflow-hidden">
-            <img
-              src={img("/images/team/03-showroom.jpg")}
+            <Picture
+              src="/images/team/03-showroom.jpg"
               alt="Шоурум на Тверской"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.15) 0%, rgba(14,15,17,.55) 100%)" }} />

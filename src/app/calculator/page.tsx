@@ -23,8 +23,9 @@ export default function CalculatorPage() {
     <>
       <Section className="!pt-32">
         <SectionHeader
+          as="h1"
           eyebrow="Калькулятор"
-          title={<>Стоимость <em className="not-italic text-accent">за 30 секунд</em></>}
+          title={<>Стоимость натяжного потолка <em className="not-italic text-accent">за 30 секунд</em></>}
           sub="Выберите тип помещения, площадь, материал и опции. Калькулятор даст ориентировочную цену сразу — финальная сумма зафиксируется после бесплатного замера."
         />
         <Calculator />

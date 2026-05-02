@@ -1,8 +1,8 @@
 import { Section, SectionHeader } from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import CTABanner from "@/components/CTABanner";
+import Picture from "@/components/Picture";
 import { PROJECTS } from "@/lib/data";
-import { img } from "@/lib/img";
 
 export const metadata = {
   title: { absolute: "Портфолио · Натяжные потолки — АТМОСФЕРА" },
@@ -24,7 +24,7 @@ export default function PortfolioPage() {
     <>
       <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <img src={img(PROJECTS[8].image)} alt="" aria-hidden className="w-full h-full object-cover opacity-35" />
+          <Picture src={PROJECTS[8].image} alt="" loading="eager" className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">

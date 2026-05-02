@@ -41,7 +41,7 @@ export default function StickyWidget() {
           <Bubble key={c.label} channel={c} />
         ))}
       </div>
-      <div className="flex lg:hidden fixed bottom-20 right-3 z-30 flex-col items-end gap-2.5">
+      <div data-floating="contact" className="flex lg:hidden fixed bottom-20 right-3 z-30 flex-col items-end gap-2.5">
         {[allChannels[0], allChannels[3]].map((c) => (
           <Bubble key={c.label} channel={c} />
         ))}

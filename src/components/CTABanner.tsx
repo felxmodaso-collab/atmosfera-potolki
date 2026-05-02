@@ -1,7 +1,7 @@
 "use client";
 import { ArrowRight } from "lucide-react";
 import { useContactModal } from "./ContactProvider";
-import { img } from "@/lib/img";
+import Picture from "./Picture";
 
 type Props = {
   title: React.ReactNode;
@@ -16,7 +16,7 @@ export default function CTABanner({ title, sub, button = "Вызвать зам�
   const { open } = useContactModal();
   return (
     <div className="cta-banner grain p-10 md:p-16 lg:p-20 text-bg">
-      <img src={img(bg)} alt="" aria-hidden />
+      <Picture src={bg} alt="" loading="lazy" />
       <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center relative">
         <div>
           {badge && <span className="badge badge-discount mb-5 inline-flex">{badge}</span>}
