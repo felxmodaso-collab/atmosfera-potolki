@@ -5,6 +5,8 @@ import CTABanner from "@/components/CTABanner";
 import Picture from "@/components/Picture";
 import { TYPES } from "@/lib/data";
 
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
+
 export const metadata = {
   title: { absolute: "Услуги · Натяжные потолки — АТМОСФЕРА" },
   description: "Все типы натяжных потолков: матовые, глянцевые, сатин, фотопечать, двухуровневые, парящие, тканевые, звёздное небо.",
@@ -13,8 +15,10 @@ export const metadata = {
     title: "Услуги · 8 типов натяжных потолков — АТМОСФЕРА",
     description: "Матовые, глянцевые, сатин, фотопечать, двухуровневые, парящие, тканевые, звёздное небо. Цена за м² с монтажом.",
     url: "/services/",
+    images: OG_IMAGES,
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "Услуги · 8 типов натяжных потолков — АТМОСФЕРА",
     description: "Матовые, глянцевые, сатин, фотопечать, двухуровневые, парящие, тканевые, звёздное небо.",
   },

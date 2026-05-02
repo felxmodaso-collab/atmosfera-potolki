@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Политика обработки персональных данных",
@@ -8,8 +9,10 @@ export const metadata: Metadata = {
     title: "Политика обработки персональных данных — АТМОСФЕРА",
     description: "152-ФЗ: цели, сроки хранения, права субъекта, контакты оператора.",
     url: "/privacy/",
+    images: [...OG_IMAGES],
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "Политика обработки персональных данных",
     description: "152-ФЗ: цели, сроки, права субъекта.",
   },

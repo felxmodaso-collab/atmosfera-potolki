@@ -3,6 +3,8 @@ import Calculator from "@/components/Calculator";
 import Quiz from "@/components/Quiz";
 import CTABanner from "@/components/CTABanner";
 
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
+
 export const metadata = {
   title: { absolute: "Калькулятор · Стоимость потолка — АТМОСФЕРА" },
   description: "Рассчитайте стоимость натяжного потолка онлайн за 30 секунд. Точная цена — после бесплатного замера.",
@@ -11,8 +13,10 @@ export const metadata = {
     title: "Калькулятор стоимости натяжного потолка — АТМОСФЕРА",
     description: "Live-расчёт за 30 секунд. Скидка 10% при заявке через квиз. Финальная цена — в договоре после замера.",
     url: "/calculator/",
+    images: OG_IMAGES,
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "Калькулятор натяжного потолка — за 30 секунд",
     description: "Скидка 10% при заявке через квиз.",
   },

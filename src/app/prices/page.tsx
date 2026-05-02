@@ -4,6 +4,8 @@ import PriceTiers from "@/components/PriceTiers";
 import Picture from "@/components/Picture";
 import { PRICE_OPTIONS, TYPES } from "@/lib/data";
 
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
+
 export const metadata = {
   title: { absolute: "Цены · Прайс натяжных потолков — АТМОСФЕРА" },
   description: "Прозрачный прайс: цены за м², опции, пакетные предложения. Все цены — с монтажом, без скрытых доплат.",
@@ -12,8 +14,10 @@ export const metadata = {
     title: "Прайс натяжных потолков — АТМОСФЕРА",
     description: "От 850 ₽/м² с монтажом. 3 пакета (Стандарт/Премиум/Архитектурный), 8 типов фактур, 10 опций. Цена в договоре.",
     url: "/prices/",
+    images: OG_IMAGES,
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "Прайс натяжных потолков — от 850 ₽/м²",
     description: "3 пакета, 8 фактур, 10 опций. Цена в договоре.",
   },

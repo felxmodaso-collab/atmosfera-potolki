@@ -4,6 +4,8 @@ import CTABanner from "@/components/CTABanner";
 import Picture from "@/components/Picture";
 import { PROJECTS } from "@/lib/data";
 
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
+
 export const metadata = {
   title: { absolute: "Портфолио · Натяжные потолки — АТМОСФЕРА" },
   description: "Реальные проекты: 12 кейсов с фото, описанием, типом потолка, площадью и бюджетом.",
@@ -12,8 +14,10 @@ export const metadata = {
     title: "Портфолио · 12 проектов натяжных потолков — АТМОСФЕРА",
     description: "От гостиной 35 м² с двухуровневым комбо до парящего контура в столовой. Реальные кейсы с локацией и бюджетом.",
     url: "/portfolio/",
+    images: OG_IMAGES,
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "Портфолио · 12 проектов натяжных потолков",
     description: "Реальные объекты в Москве и МО — фото, площадь, бюджет.",
   },

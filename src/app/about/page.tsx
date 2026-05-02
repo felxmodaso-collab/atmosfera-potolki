@@ -5,6 +5,8 @@ import CTABanner from "@/components/CTABanner";
 import Picture from "@/components/Picture";
 import { ADVANTAGES, COMPANY } from "@/lib/data";
 
+import { OG_IMAGES, TWITTER_DEFAULTS } from "@/lib/seo";
+
 export const metadata = {
   title: { absolute: "О компании АТМОСФЕРА · Натяжные потолки в Москве" },
   description: "Бригады, оборудование, гарантия 12 лет. Больше 3 800 объектов в Москве и Подмосковье с 2014 года.",
@@ -13,8 +15,10 @@ export const metadata = {
     title: "О компании АТМОСФЕРА — натяжные потолки с 2014 года",
     description: "Шоурум на Тверской, 22 мастера в штате, 3 800+ объектов в Москве и МО. Договор с фиксированной ценой.",
     url: "/about/",
+    images: OG_IMAGES,
   },
   twitter: {
+    ...TWITTER_DEFAULTS,
     title: "АТМОСФЕРА — натяжные потолки с 2014 года",
     description: "Шоурум на Тверской · 3 800+ объектов · Договор с фиксированной ценой.",
   },
