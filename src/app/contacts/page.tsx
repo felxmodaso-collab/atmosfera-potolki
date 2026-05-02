@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 import { WhatsAppIcon, TelegramIcon, MaxIcon } from "@/components/BrandIcons";
 import { img } from "@/lib/img";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactsPage() {
   const [phone, setPhone] = useState("");
@@ -69,9 +70,9 @@ export default function ContactsPage() {
 
             <h4 className="text-xs uppercase tracking-[0.2em] text-muted mb-4">Мессенджеры</h4>
             <div className="flex flex-wrap gap-2">
-              <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
-              <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
-              <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
+              <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
+              <a href={COMPANY.telegram} target="_blank" rel="noopener noreferrer" className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
+              <a href={COMPANY.max} target="_blank" rel="noopener noreferrer" className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
             </div>
           </div>
 
@@ -96,7 +97,7 @@ export default function ContactsPage() {
                 </Field>
                 <label className="flex items-start gap-3 text-sm text-muted py-2">
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} style={{ width: "18px", height: "18px", flexShrink: 0, marginTop: "2px" }} />
-                  <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</a></span>
+                  <span>Согласен на обработку персональных данных в соответствии с <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link></span>
                 </label>
                 <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>Отправить сообщение</button>
               </form>

@@ -5,7 +5,7 @@ const BASE = "https://felxmodaso-collab.github.io/atmosfera-potolki";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/_next/", "/api/"] },
+      { userAgent: "*", allow: "/", disallow: ["/atmosfera-potolki/_next/"] },
     ],
     sitemap: `${BASE}/sitemap.xml`,
     host: BASE,

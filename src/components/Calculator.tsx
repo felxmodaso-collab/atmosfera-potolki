@@ -2,8 +2,21 @@
 import { useMemo, useState } from "react";
 import { Sparkles, Check } from "lucide-react";
 import { TYPES, ROOM_PRESETS, PRICE_OPTIONS } from "@/lib/data";
+import { useContactModal } from "./ContactProvider";
+
+const VISIBLE_OPT_IDS = ["led-cove", "led-rgb", "spot", "spot-led", "chandelier", "moisture"];
+const PRICE_FN: Record<string, (area: number, perimeter: number) => number> = {
+  "led-cove":   (_a, p) => p * 1200,
+  "led-rgb":    (_a, p) => p * 1800,
+  "spot":       (a)     => 350 * Math.max(4, Math.round(a / 4)),
+  "spot-led":   (a)     => 950 * Math.max(4, Math.round(a / 4)),
+  "chandelier": ()      => 1200,
+  "moisture":   (a)     => a * 180,
+  "transition": (_a, p) => p * 2100,
+};
 
 export default function Calculator() {
+  const { open } = useContactModal();
   const [room, setRoom] = useState(ROOM_PRESETS[2].id);
   const [area, setArea] = useState(ROOM_PRESETS[2].area);
   const [typeId, setTypeId] = useState(TYPES[0].id);
@@ -22,13 +35,13 @@ export default function Calculator() {
   const total = useMemo(() => {
     const t = TYPES.find((x) => x.id === typeId)!;
     let sum = area * t.pricePerM2;
-    if (opts["led-cove"]) sum += perimeter * 1200;
-    if (opts["led-rgb"]) sum += perimeter * 1800;
-    if (opts["spot-led"]) sum += 950 * Math.max(4, Math.round(area / 4));
-    if (opts.chandelier) sum += 1200;
-    if (opts.moisture) sum += area * 180;
+    for (const id of Object.keys(opts)) {
+      if (opts[id] && PRICE_FN[id]) sum += PRICE_FN[id](area, perimeter);
+    }
     return Math.round(sum);
   }, [area, typeId, opts, perimeter]);
+
+  const visibleOpts = PRICE_OPTIONS.filter((o) => VISIBLE_OPT_IDS.includes(o.id));
 
   const discount = Math.round(total * 0.1);
   const final = total - discount;
@@ -80,10 +93,10 @@ export default function Calculator() {
         <div>
           <label className="block text-xs uppercase tracking-[0.16em] text-muted mb-3">5 · Дополнительно</label>
           <div className="grid sm:grid-cols-2 gap-2">
-            {PRICE_OPTIONS.slice(0, 6).map((o) => {
+            {visibleOpts.map((o) => {
               const active = !!opts[o.id];
               return (
-                <label key={o.id} className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all ${active ? "bg-accent/8 border-accent" : "border-line hover:border-ink/40 bg-bg"}`}>
+                <label key={o.id} className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all ${active ? "bg-accent/10 border-accent" : "border-line hover:border-ink/40 bg-bg"}`}>
                   <span className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 transition ${active ? "bg-accent text-white" : "border border-line"}`}>
                     {active && <Check size={13} strokeWidth={3} />}
                   </span>
@@ -115,7 +128,7 @@ export default function Calculator() {
             <Row key={k} label={PRICE_OPTIONS.find((p) => p.id === k)!.name} value="✓" />
           ))}
         </div>
-        <a href="#quiz" className="btn btn-accent w-full !py-4">Зафиксировать цену</a>
+        <button onClick={() => open("lead")} className="btn btn-accent w-full !py-4">Зафиксировать цену</button>
         <p className="text-xs text-bg/55 mt-3 text-center">Ориентировочный расчёт. Финальная цена — после замера.</p>
       </aside>
     </div>

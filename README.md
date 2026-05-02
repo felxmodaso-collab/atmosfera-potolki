@@ -1,16 +1,36 @@
 # АТМОСФЕРА — натяжные потолки
 
+> ⚠️ **PORTFOLIO DEMO.** Это спекулятивный сайт для демонстрации. Все формы (заявки, квиз, контакты) — **mock без backend**: submit показывает success-state, но никуда не отправляет данные. Контактные данные (`+7 (495) 123-45-67`, `@atmosfera_potolki`, `hello@atmosfera-potolki.ru`) — **placeholder**, реальной компании за ними нет. Реквизиты (ИНН/ОГРН) выглядят валидно по формату, но также вымышлены.
+
 Многостраничный коммерческий сайт услугового бизнеса. Полный функционал многосекционного лендинга в стиле центров отделки: квиз-калькулятор, портфолио объектов, прайс-сетка, FAQ, формы заявок, мессенджеры, политика обработки ПДн по 152-ФЗ.
 
 **Live:** https://felxmodaso-collab.github.io/atmosfera-potolki/
 
 ## Стек
 
-- **Next.js 14** (App Router, Static Export)
-- **TypeScript**
-- **Tailwind CSS** (custom design tokens, серифная Cormorant Garamond + sans Inter)
+- **Next.js 14** (App Router, Static Export, basePath `/atmosfera-potolki`)
+- **TypeScript** (strict, no `any`)
+- **Tailwind CSS** (design tokens, серифная **Spectral** + sans **Manrope** через `next/font/google`)
 - **Vanilla CSS animations** (никаких runtime libs — лёгкий бандл)
+- **lucide-react** для иконок (tree-shaken)
 - **Pollinations.ai (FLUX)** — все интерьерные фото сгенерированы через бесплатный API
+- **WebP + JPG fallback** через компонент `<Picture>`
+
+## Mock-форм для prod-готовности
+
+Чтобы отправить реальные заявки, нужно подключить один из:
+- [Formspree](https://formspree.io/) — proxy-эндпоинт на email
+- [Web3Forms](https://web3forms.com/) — простой POST в облако
+- Telegram Bot API — отправка в личку владельца
+- Собственный backend (Vercel Functions, GH Pages не поддерживает)
+
+Все handlers лежат в:
+- `src/components/Quiz.tsx` (`submit` функция)
+- `src/components/ContactModal.tsx` (`submit`)
+- `src/app/contacts/page.tsx` (`submit`)
+- `src/components/HeroCalc.tsx` (CTA → ContactModal `lead`)
+
+Для аналитики установить env var `NEXT_PUBLIC_YM_ID=12345678` (Yandex Metrika ID). Без неё счётчик не рендерится.
 
 ## Страницы
 

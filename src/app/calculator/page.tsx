@@ -6,6 +6,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata = {
   title: { absolute: "Калькулятор · Стоимость потолка — АТМОСФЕРА" },
   description: "Рассчитайте стоимость натяжного потолка онлайн за 30 секунд. Точная цена — после бесплатного замера.",
+  alternates: { canonical: "/calculator/" },
 };
 
 export default function CalculatorPage() {

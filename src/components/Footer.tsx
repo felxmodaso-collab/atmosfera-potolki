@@ -17,9 +17,9 @@ export default function Footer() {
             Натяжные потолки в Москве и МО с 2014 года. Цена фиксируется в договоре, гарантия 12&nbsp;лет на полотно, монтаж за 1&nbsp;день. Свой склад фактур на Тверской.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
-            <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
-            <a href={COMPANY.telegram} className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
-            <a href={COMPANY.max} className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
+            <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
+            <a href={COMPANY.telegram} target="_blank" rel="noopener noreferrer" className="btn btn-tg !py-2.5 text-sm"><TelegramIcon size={16} /> Telegram</a>
+            <a href={COMPANY.max} target="_blank" rel="noopener noreferrer" className="btn btn-gold !py-2.5 text-sm"><MaxIcon size={16} /> MAX</a>
           </div>
         </div>
 

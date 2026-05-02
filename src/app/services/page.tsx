@@ -8,6 +8,7 @@ import { img } from "@/lib/img";
 export const metadata = {
   title: { absolute: "Услуги · Натяжные потолки — АТМОСФЕРА" },
   description: "Все типы натяжных потолков: матовые, глянцевые, сатин, фотопечать, двухуровневые, парящие, тканевые, звёздное небо.",
+  alternates: { canonical: "/services/" },
 };
 
 export default function ServicesPage() {

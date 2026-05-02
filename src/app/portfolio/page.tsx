@@ -7,6 +7,7 @@ import { img } from "@/lib/img";
 export const metadata = {
   title: { absolute: "Портфолио · Натяжные потолки — АТМОСФЕРА" },
   description: "Реальные проекты: 12 кейсов с фото, описанием, типом потолка, площадью и бюджетом.",
+  alternates: { canonical: "/portfolio/" },
 };
 
 export default function PortfolioPage() {

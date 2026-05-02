@@ -8,6 +8,7 @@ import { img } from "@/lib/img";
 export const metadata = {
   title: { absolute: "О компании АТМОСФЕРА · Натяжные потолки в Москве" },
   description: "Бригады, оборудование, гарантия 12 лет. Больше 3 800 объектов в Москве и Подмосковье с 2014 года.",
+  alternates: { canonical: "/about/" },
 };
 
 export default function AboutPage() {
@@ -62,7 +63,7 @@ export default function AboutPage() {
 
       <Section className="bg-ink text-bg">
         <SectionHeader eyebrow="Принципы работы" title={<>Шесть правил, которым <em className="not-italic text-gold">не изменяем</em></>} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-bg/8 rounded-3xl overflow-hidden border border-bg/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-bg/10 rounded-3xl overflow-hidden border border-bg/10">
           {ADVANTAGES.map((a, i) => (
             <div key={i} className="bg-ink p-9 group hover:bg-graphite/40 transition-colors">
               <div className="text-xs uppercase tracking-[0.2em] text-gold mb-4 tabular">{`0${i + 1}`}</div>

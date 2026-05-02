@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowRight, ArrowLeft, Check, Sparkles, Gift } from "lucide-react";
 
 const STEPS = [
@@ -123,7 +124,7 @@ export default function Quiz() {
                 onChange={(e) => setAgree(e.target.checked)}
                 style={{ width: "18px", height: "18px", flexShrink: 0, marginTop: "2px" }}
               />
-              <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</a></span>
+              <span>Согласен на обработку персональных данных в соответствии с <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link></span>
             </label>
           </div>
           <div className="flex justify-between mt-6">

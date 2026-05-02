@@ -130,6 +130,20 @@ input:focus, textarea:focus, select:focus {
 
 .no-scroll { overflow: hidden; }
 
+/* Reduced-motion preferences — отключить декоративные анимации */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .marquee-track,
+  .hero-image,
+  .architectural-grid::before,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
 .fade-up { animation: fadeUp .7s ease both; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 

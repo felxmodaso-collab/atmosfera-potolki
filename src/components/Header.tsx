@@ -32,6 +32,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
   const dark = !scrolled;
   const navColor = dark ? "text-bg/85" : "text-graphite";
 
@@ -131,14 +143,14 @@ export default function Header() {
           </a>
           <a
             href={`tel:${COMPANY.phoneRaw}`}
-            className={`md:hidden w-10 h-10 rounded-full border flex items-center justify-center transition ${dark ? "border-bg/40 bg-bg/10 text-bg backdrop-blur" : "border-line bg-bg text-ink"}`}
+            className={`md:hidden w-11 h-11 rounded-full border flex items-center justify-center transition ${dark ? "border-bg/40 bg-bg/10 text-bg backdrop-blur" : "border-line bg-bg text-ink"}`}
             aria-label="Позвонить"
           >
             <Phone size={16} />
           </a>
           <button
             onClick={() => setMenuOpen(true)}
-            className={`lg:hidden w-10 h-10 rounded-full border flex items-center justify-center transition-colors ${dark ? "border-bg/40 bg-bg/10 text-bg backdrop-blur" : "border-line bg-bg"}`}
+            className={`lg:hidden w-11 h-11 rounded-full border flex items-center justify-center transition-colors ${dark ? "border-bg/40 bg-bg/10 text-bg backdrop-blur" : "border-line bg-bg"}`}
             aria-label="Меню"
           ><Menu size={18} /></button>
         </div>
@@ -171,7 +183,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-bg" onClick={() => setMenuOpen(false)}>
+        <div role="dialog" aria-modal="true" aria-label="Меню" className="fixed inset-0 z-50 bg-bg overflow-y-auto" onClick={() => setMenuOpen(false)}>
           <div className="container-x py-6 flex items-center justify-between">
             <span className="serif text-2xl">АТМОСФЕРА</span>
             <button onClick={() => setMenuOpen(false)} className="w-10 h-10 rounded-full border border-line flex items-center justify-center" aria-label="Закрыть"><X size={18} /></button>

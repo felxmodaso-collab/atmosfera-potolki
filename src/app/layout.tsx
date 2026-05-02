@@ -14,19 +14,24 @@ import { COMPANY } from "@/lib/data";
 const spectral = Spectral({
   subsets: ["latin", "cyrillic"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-display",
 });
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
 });
 
-const SITE_URL = "https://felxmodaso-collab.github.io/atmosfera-potolki";
-const OG_IMAGE = `${SITE_URL}/images/hero/main.jpg`;
+const BASE_PATH = "/atmosfera-potolki";
+const SITE_URL = `https://felxmodaso-collab.github.io${BASE_PATH}`;
+const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`;
+const FAVICON = `${BASE_PATH}/favicon.svg`;
+const APPLE_ICON = `${BASE_PATH}/apple-touch-icon.png`;
+const YM_ID = process.env.NEXT_PUBLIC_YM_ID || ""; // пустой → счётчик не рендерится
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,10 +43,10 @@ export const metadata: Metadata = {
     "Натяжные потолки под ключ за 1 день. Матовые, глянцевые, сатин, фотопечать, двухуровневые, парящие. Замер бесплатно. Цена в договоре. Гарантия 12 лет.",
   keywords: ["натяжные потолки", "потолок под ключ", "натяжной потолок Москва", "парящий потолок", "двухуровневый потолок"],
   icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
+    icon: FAVICON,
+    apple: APPLE_ICON,
   },
-  alternates: { canonical: "/" },
+  alternates: { canonical: SITE_URL + "/" },
   openGraph: {
     type: "website",
     locale: "ru_RU",
@@ -154,19 +159,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
 
-        <Script id="ym-counter" strategy="afterInteractive">
-          {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        {YM_ID && (
+          <>
+            <Script id="ym-counter" strategy="afterInteractive">
+              {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 m[i].l=1*new Date();
 for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-ym(99999999, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });`}
-        </Script>
-        <noscript>
-          <div>
-            <img src="https://mc.yandex.ru/watch/99999999" style={{ position: "absolute", left: "-9999px" }} alt="" />
-          </div>
-        </noscript>
+ym(${YM_ID}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });`}
+            </Script>
+            <noscript>
+              <div>
+                <img src={`https://mc.yandex.ru/watch/${YM_ID}`} style={{ position: "absolute", left: "-9999px" }} alt="" />
+              </div>
+            </noscript>
+          </>
+        )}
 
         <ContactProvider>
           <Header />

@@ -7,6 +7,7 @@ import { img } from "@/lib/img";
 export const metadata = {
   title: { absolute: "Цены · Прайс натяжных потолков — АТМОСФЕРА" },
   description: "Прозрачный прайс: цены за м², опции, пакетные предложения. Все цены — с монтажом, без скрытых доплат.",
+  alternates: { canonical: "/prices/" },
 };
 
 export default function PricesPage() {

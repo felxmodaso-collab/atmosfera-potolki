@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { TYPES } from "@/lib/data";
+import { useContactModal } from "./ContactProvider";
 
 const QUICK_TYPES = TYPES.slice(0, 4);
 const FEATURES = [
@@ -11,6 +12,7 @@ const FEATURES = [
 ];
 
 export default function HeroCalc() {
+  const { open } = useContactModal();
   const [area, setArea] = useState(20);
   const [typeId, setTypeId] = useState(QUICK_TYPES[0].id);
   const [opts, setOpts] = useState<Record<string, boolean>>({});
@@ -93,7 +95,7 @@ export default function HeroCalc() {
         </div>
         <div className="flex items-end justify-between gap-4">
           <div className="text-5xl font-light leading-none tabular tracking-tight">{final.toLocaleString("ru")} <span className="text-3xl text-gold">₽</span></div>
-          <a href="#quiz" className="btn btn-accent !py-3 !px-5 text-sm">Заявка <ArrowRight size={15} /></a>
+          <button onClick={() => open("lead")} className="btn btn-accent !py-3 !px-5 text-sm">Заявка <ArrowRight size={15} /></button>
         </div>
       </div>
     </div>

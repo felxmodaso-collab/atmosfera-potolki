@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 type Variant = "lead" | "callback" | "measurer";
 const TITLES: Record<Variant, { title: string; sub: string; cta: string }> = {
@@ -59,7 +60,7 @@ export default function ContactModal({ variant, onClose }: { variant: Variant; o
                 />
                 <span>
                   Согласен на обработку персональных данных в соответствии с{" "}
-                  <a href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</a>
+                  <Link href="/privacy" className="underline hover:text-ink">Политикой конфиденциальности</Link>
                 </span>
               </label>
               <button type="submit" className="btn btn-primary w-full" disabled={!phone || !agree}>{cfg.cta}</button>
