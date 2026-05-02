@@ -36,8 +36,8 @@ import Quiz from "./Quiz";
  *   — open-окошко ЗАКРЫВАЕТСЯ (как Marquiz), но lastState=minimized — следующая страница откроет таблетку
  */
 
-const LS_KEY = "atm_quiz_v2";
-const SS_KEY = "atm_quiz_session";
+const LS_KEY = "atm_quiz_v3";
+const SS_KEY = "atm_quiz_session_v3";
 const DISMISS_DAYS = 7;
 const TIMER_MS = 25_000;
 const SCROLL_THRESHOLD = 0.55;
