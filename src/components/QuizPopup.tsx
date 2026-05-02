@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { X, Minus, Sparkles, ChevronUp } from "lucide-react";
+import { X, Sparkles, ChevronUp } from "lucide-react";
 import Quiz from "./Quiz";
 
 /**
@@ -203,7 +203,7 @@ export default function QuizPopup() {
         <div className="relative p-5">
           <div className="flex items-start justify-between gap-3 mb-3">
             <span className="badge badge-discount"><Sparkles size={12} /> Скидка 10%</span>
-            <button onClick={dismiss} aria-label="Закрыть" className="text-bg/60 hover:text-bg transition w-7 h-7 flex items-center justify-center -mt-1 -mr-1">
+            <button onClick={minimize} aria-label="Свернуть" className="text-bg/60 hover:text-bg transition w-7 h-7 flex items-center justify-center -mt-1 -mr-1">
               <X size={16} />
             </button>
           </div>
@@ -211,14 +211,9 @@ export default function QuizPopup() {
           <p className="text-sm text-bg/70 leading-relaxed mb-4">
             6 вопросов о помещении — менеджер пришлёт спецификацию с зафиксированной скидкой.
           </p>
-          <div className="flex gap-2">
-            <button onClick={open} className="btn btn-gold flex-1 !py-2.5 text-sm">
-              Начать квиз
-            </button>
-            <button onClick={minimize} aria-label="Свернуть" className="w-10 h-10 rounded-full border border-bg/20 hover:bg-bg/10 flex items-center justify-center transition">
-              <Minus size={16} />
-            </button>
-          </div>
+          <button onClick={open} className="btn btn-gold w-full !py-2.5 text-sm">
+            Начать квиз
+          </button>
         </div>
       </div>
     );
@@ -243,10 +238,7 @@ export default function QuizPopup() {
           </div>
         </div>
         <div className="flex items-center gap-1 shrink-0">
-          <button onClick={minimize} aria-label="Свернуть" title="Свернуть" className="w-8 h-8 rounded-full hover:bg-bg/10 flex items-center justify-center transition">
-            <Minus size={16} />
-          </button>
-          <button onClick={dismiss} aria-label="Закрыть" title="Закрыть на 7 дней" className="w-8 h-8 rounded-full hover:bg-bg/10 flex items-center justify-center transition">
+          <button onClick={minimize} aria-label="Свернуть" title="Свернуть в таблетку" className="w-8 h-8 rounded-full hover:bg-bg/10 flex items-center justify-center transition">
             <X size={16} />
           </button>
         </div>

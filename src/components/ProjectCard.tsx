@@ -18,9 +18,9 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
           </div>
           <div className="absolute bottom-5 left-5 right-5 text-bg">
             <div className="text-[11px] uppercase tracking-[0.18em] text-gold mb-1.5">{p.type}</div>
-            <div className={`serif ${featured ? "text-3xl lg:text-4xl" : "text-xl"} mb-1 flex items-center justify-between gap-3`}>
-              <span>{p.title}</span>
-              <span className="w-9 h-9 rounded-full bg-bg/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all"><ArrowUpRight size={16} /></span>
+            <div className={`serif ${featured ? "text-3xl lg:text-4xl" : "text-xl"} mb-1 leading-[1.15] pb-1 flex items-end justify-between gap-3`}>
+              <span className="block">{p.title}</span>
+              <span className="w-9 h-9 shrink-0 rounded-full bg-bg/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all"><ArrowUpRight size={16} /></span>
             </div>
             <div className="text-sm text-bg/70 tabular">{p.budget}</div>
           </div>
@@ -29,9 +29,9 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
 
       {open && (
         <div className="fixed inset-0 z-[90] p-4 flex items-center justify-center" style={{ background: "rgba(14,15,17,.78)", backdropFilter: "blur(8px)" }} onClick={() => setOpen(false)}>
-          <div className="card max-w-5xl w-full max-h-[92vh] overflow-auto relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-bg/95 backdrop-blur flex items-center justify-center hover:bg-bg" aria-label="Закрыть">
-              <X size={18} />
+          <div className="max-w-5xl w-full max-h-[92vh] overflow-auto relative bg-bg rounded-2xl shadow-deep border border-line text-ink" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-bg/95 backdrop-blur flex items-center justify-center hover:bg-bg shadow-soft border border-line" aria-label="Закрыть">
+              <X size={18} className="text-ink" />
             </button>
             <div className="grid md:grid-cols-2">
               <div className="relative">
@@ -45,7 +45,7 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
             </div>
             <div className="p-8 lg:p-10">
               <div className="eyebrow mb-3"><MapPin size={12} /> {p.client}</div>
-              <h3 className="serif text-h1 mb-6">{p.title}</h3>
+              <h3 className="serif text-h1 mb-6 leading-[1.1] text-ink">{p.title}</h3>
               <div className="grid sm:grid-cols-3 gap-5 mb-7 pb-7 border-b border-line">
                 <Field icon={<Tag size={16} />} label="Тип" value={p.type} />
                 <Field icon={<Ruler size={16} />} label="Площадь" value={p.area} />
@@ -63,10 +63,10 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
 function Field({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div>
-      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted mb-1">
+      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted mb-1.5">
         {icon} {label}
       </div>
-      <div className="font-medium text-lg">{value}</div>
+      <div className="font-medium text-lg text-ink">{value}</div>
     </div>
   );
 }

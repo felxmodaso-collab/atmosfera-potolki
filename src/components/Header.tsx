@@ -144,14 +144,10 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Уровень 3 — nav-row (только desktop, под main bar) */}
+      {/* Уровень 3 — nav-row (всегда видим на desktop, на всех страницах) */}
       <div
-        className="hidden lg:block overflow-hidden transition-all duration-300 border-t"
-        style={{
-          height: stripCollapsed ? 0 : 40,
-          opacity: stripCollapsed ? 0 : 1,
-          borderColor: dark ? "rgba(255,255,255,.08)" : "rgba(226,221,211,.5)",
-        }}
+        className="hidden lg:block border-t"
+        style={{ borderColor: dark ? "rgba(255,255,255,.08)" : "rgba(226,221,211,.5)" }}
       >
         <nav className={`container-x h-10 flex items-center gap-7 text-sm transition-colors ${navColor}`}>
           {NAV.filter(n => n.label !== "Главная").map((n) => {

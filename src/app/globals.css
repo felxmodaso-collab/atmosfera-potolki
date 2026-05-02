@@ -17,7 +17,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.serif { font-family: var(--font-display), Georgia, serif; font-feature-settings: "ss01", "ss02"; letter-spacing: -0.012em; }
+.serif { font-family: var(--font-display), Georgia, serif; letter-spacing: -0.012em; }
 .tabular { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 
 .btn {
