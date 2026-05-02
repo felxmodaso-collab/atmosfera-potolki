@@ -36,7 +36,7 @@ export default function CookieBanner() {
       className="fixed bottom-3 left-3 right-3 lg:left-auto lg:right-6 lg:bottom-6 lg:max-w-sm z-[95] float-tile rounded-2xl p-4 lg:p-5 fade-up"
     >
       <p className="text-xs leading-relaxed text-ink/85 mb-3">
-        Cookies для аналитики. Продолжая, вы соглашаетесь с{" "}
+        Cookies нужны для работы сайта. Продолжая, вы соглашаетесь с{" "}
         <Link href="/privacy" className="underline underline-offset-2 hover:text-accent">
           обработкой персональных данных
         </Link>{" "}
