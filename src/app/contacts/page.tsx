@@ -27,7 +27,7 @@ export default function ContactsPage() {
     <>
       <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <Picture src="/images/team/03-showroom.jpg" alt="" loading="eager" className="w-full h-full object-cover opacity-35" />
+          <Picture src="/images/team/03-showroom.jpg" alt="" loading="eager" fetchPriority="high" width={1920} height={900} className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">
@@ -116,6 +116,8 @@ export default function ContactsPage() {
               src="/images/team/03-showroom.jpg"
               alt="Шоурум на Тверской"
               loading="lazy"
+              width={1200}
+              height={750}
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.15) 0%, rgba(14,15,17,.55) 100%)" }} />

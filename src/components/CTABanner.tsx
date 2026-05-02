@@ -16,7 +16,7 @@ export default function CTABanner({ title, sub, button = "Вызвать зам�
   const { open } = useContactModal();
   return (
     <div className="cta-banner grain p-10 md:p-16 lg:p-20 text-bg">
-      <Picture src={bg} alt="" loading="lazy" />
+      <Picture src={bg} alt="" loading="lazy" width={1920} height={640} />
       <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center relative">
         <div>
           {badge && <span className="badge badge-discount mb-5 inline-flex">{badge}</span>}

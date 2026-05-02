@@ -16,7 +16,7 @@ export default function TypeCard({ t, large = false }: { t: CeilingType; large?:
   return (
     <Link href={`/services#${t.id}`} className={`group block relative overflow-hidden rounded-2xl ${large ? "lg:col-span-2" : ""}`}>
       <div className={`overflow-hidden bg-cream relative ${large ? "aspect-[16/9]" : "aspect-[4/5]"}`}>
-        <Picture src={t.image} alt={t.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+        <Picture src={t.image} alt={t.title} width={large ? 1280 : 640} height={large ? 720 : 800} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-transparent" />
         {badge && <span className={`badge ${badge.cls} absolute top-4 left-4 z-10`}>{badge.label}</span>}
         {discount > 0 && <span className="badge badge-discount absolute top-4 right-16 z-10">−{discount}%</span>}

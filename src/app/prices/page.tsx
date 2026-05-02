@@ -28,7 +28,7 @@ export default function PricesPage() {
     <>
       <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <Picture src={TYPES[1].image} alt="" loading="eager" className="w-full h-full object-cover opacity-35" />
+          <Picture src={TYPES[1].image} alt="" loading="eager" fetchPriority="high" width={1920} height={900} className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">
@@ -56,7 +56,7 @@ export default function PricesPage() {
           {TYPES.map((t) => (
             <div key={t.id} className="rounded-2xl overflow-hidden border border-bg/10 bg-graphite/40 backdrop-blur group hover:border-gold/40 transition">
               <div className="aspect-[4/3] overflow-hidden">
-                <Picture src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                <Picture src={t.image} alt={t.title} loading="lazy" width={800} height={600} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
               </div>
               <div className="p-5">
                 <div className="serif text-xl mb-2">{t.title}</div>

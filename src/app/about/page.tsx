@@ -29,7 +29,7 @@ export default function AboutPage() {
     <>
       <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <Picture src="/images/team/03-showroom.jpg" alt="" loading="eager" className="w-full h-full object-cover opacity-40" />
+          <Picture src="/images/team/03-showroom.jpg" alt="" loading="eager" fetchPriority="high" width={1920} height={900} className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.55) 0%, rgba(14,15,17,.3) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">
@@ -60,16 +60,16 @@ export default function AboutPage() {
       <Section className="!pt-0">
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-12 lg:col-span-7 aspect-[16/10] rounded-2xl overflow-hidden bg-cream">
-            <Picture src="/images/team/02-installation.jpg" alt="Монтаж" loading="lazy" className="w-full h-full object-cover" />
+            <Picture src="/images/team/02-installation.jpg" alt="Монтаж" loading="lazy" width={800} height={500} className="w-full h-full object-cover" />
           </div>
           <div className="col-span-6 lg:col-span-5 aspect-[5/4] rounded-2xl overflow-hidden bg-cream">
-            <Picture src="/images/team/01-measurer.jpg" alt="Замерщик" loading="lazy" className="w-full h-full object-cover" />
+            <Picture src="/images/team/01-measurer.jpg" alt="Замерщик" loading="lazy" width={800} height={640} className="w-full h-full object-cover" />
           </div>
           <div className="col-span-6 lg:col-span-5 aspect-[5/4] rounded-2xl overflow-hidden bg-cream">
-            <Picture src="/images/team/04-equipment.jpg" alt="Оборудование" loading="lazy" className="w-full h-full object-cover" />
+            <Picture src="/images/team/04-equipment.jpg" alt="Оборудование" loading="lazy" width={800} height={640} className="w-full h-full object-cover" />
           </div>
           <div className="col-span-12 lg:col-span-7 aspect-[16/10] rounded-2xl overflow-hidden bg-cream">
-            <Picture src="/images/team/03-showroom.jpg" alt="Шоурум" loading="lazy" className="w-full h-full object-cover" />
+            <Picture src="/images/team/03-showroom.jpg" alt="Шоурум" loading="lazy" width={800} height={500} className="w-full h-full object-cover" />
           </div>
         </div>
       </Section>

@@ -9,7 +9,7 @@ export default function TeamShowroom() {
         {TEAM.map((m) => (
           <div key={m.name} className="card !rounded-2xl p-0 overflow-hidden flex flex-col">
             <div className="aspect-[4/5] bg-cream overflow-hidden">
-              <Picture src={m.image} alt={m.name} className="w-full h-full object-cover" />
+              <Picture src={m.image} alt={m.name} width={400} height={500} className="w-full h-full object-cover" />
             </div>
             <div className="p-4 flex-1 flex flex-col">
               <div className="text-[10px] uppercase tracking-[0.18em] text-accent mb-1.5">{m.role}</div>
@@ -22,7 +22,7 @@ export default function TeamShowroom() {
       </div>
       <div className="card !rounded-2xl overflow-hidden flex flex-col">
         <div className="relative aspect-[16/10] lg:aspect-auto lg:flex-1 bg-cream overflow-hidden">
-          <Picture src="/images/team/03-showroom.jpg" alt="Шоурум АТМОСФЕРА на Тверской" className="w-full h-full object-cover" />
+          <Picture src="/images/team/03-showroom.jpg" alt="Шоурум АТМОСФЕРА на Тверской" width={1200} height={800} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
           <div className="absolute bottom-5 left-5 right-5 text-bg">
             <div className="text-[10px] uppercase tracking-[0.18em] text-gold mb-1.5">Шоурум</div>

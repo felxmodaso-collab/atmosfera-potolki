@@ -27,7 +27,7 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
     <>
       <button onClick={() => setOpen(true)} className={`group text-left relative overflow-hidden rounded-2xl ${featured ? "lg:col-span-2 lg:row-span-2" : ""}`}>
         <div className={`overflow-hidden bg-cream relative w-full h-full ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
-          <Picture src={p.image} alt={p.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+          <Picture src={p.image} alt={p.title} loading="lazy" width={featured ? 1280 : 640} height={featured ? 800 : 480} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent pointer-events-none" />
           <div className="absolute top-4 left-4 flex gap-2 z-10">
             <span className="badge badge-line backdrop-blur">{p.area}</span>
@@ -52,11 +52,11 @@ export default function ProjectCard({ p, featured = false }: { p: Project; featu
             <div className="grid md:grid-cols-2">
               <div className="relative">
                 <span className="badge badge-line absolute top-4 left-4 z-10 backdrop-blur">Общий план</span>
-                <Picture src={p.image} alt={p.title} className="w-full h-full object-cover aspect-[3/2]" />
+                <Picture src={p.image} alt={p.title} width={1200} height={800} className="w-full h-full object-cover aspect-[3/2]" />
               </div>
               <div className="relative">
                 <span className="badge badge-gold absolute top-4 left-4 z-10">Деталь</span>
-                <Picture src={p.detailImage} alt={`${p.title} деталь`} className="w-full h-full object-cover aspect-[3/2]" />
+                <Picture src={p.detailImage} alt={`${p.title} деталь`} width={1200} height={800} className="w-full h-full object-cover aspect-[3/2]" />
               </div>
             </div>
             <div className="p-8 lg:p-10">

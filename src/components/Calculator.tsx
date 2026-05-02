@@ -1,8 +1,10 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Sparkles, Check } from "lucide-react";
 import { TYPES, ROOM_PRESETS, PRICE_OPTIONS } from "@/lib/data";
 import { useContactModal } from "./ContactProvider";
+
+const autoPerimeter = (area: number) => Math.round(Math.sqrt(Math.max(area, 1)) * 4);
 
 const VISIBLE_OPT_IDS = ["led-cove", "led-rgb", "spot", "spot-led", "chandelier", "transition", "moisture", "demount"];
 
@@ -24,14 +26,21 @@ export default function Calculator() {
   const [area, setArea] = useState(ROOM_PRESETS[2].area);
   const [typeId, setTypeId] = useState(TYPES[0].id);
   const [opts, setOpts] = useState<Record<string, boolean>>({});
-  const [perimeter, setPerimeter] = useState(20);
+  const [perimeter, setPerimeter] = useState(autoPerimeter(ROOM_PRESETS[2].area));
+  const [perimeterTouched, setPerimeterTouched] = useState(false);
+
+  // Авто-пересчёт периметра при изменении площади, пока пользователь не задал свой
+  useEffect(() => {
+    if (!perimeterTouched) setPerimeter(autoPerimeter(area));
+  }, [area, perimeterTouched]);
 
   const onPreset = (id: string) => {
     setRoom(id);
     const preset = ROOM_PRESETS.find((p) => p.id === id);
     if (preset) {
       setArea(preset.area);
-      setPerimeter(Math.round(Math.sqrt(preset.area) * 4));
+      setPerimeter(autoPerimeter(preset.area));
+      setPerimeterTouched(false);
     }
   };
 
@@ -69,11 +78,11 @@ export default function Calculator() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs uppercase tracking-[0.16em] text-muted mb-2">2 · Площадь, м²</label>
-            <input type="number" min={3} max={500} value={area} onChange={(e) => setArea(+e.target.value)} />
+            <input type="number" min={3} max={500} value={area} onChange={(e) => setArea(Math.max(3, +e.target.value || 0))} />
           </div>
           <div>
             <label className="block text-xs uppercase tracking-[0.16em] text-muted mb-2">3 · Периметр, м.п.</label>
-            <input type="number" min={4} max={300} value={perimeter} onChange={(e) => setPerimeter(+e.target.value)} />
+            <input type="number" min={4} max={300} value={perimeter} onChange={(e) => { setPerimeter(Math.max(4, +e.target.value || 0)); setPerimeterTouched(true); }} />
           </div>
         </div>
 

@@ -29,7 +29,7 @@ export default function ServicesPage() {
     <>
       <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <Picture src={TYPES[5].image} alt="" loading="eager" className="w-full h-full object-cover opacity-40" />
+          <Picture src={TYPES[5].image} alt="" loading="eager" fetchPriority="high" width={1920} height={900} className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.7) 0%, rgba(14,15,17,.4) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">
@@ -50,7 +50,7 @@ export default function ServicesPage() {
           return (
             <section key={t.id} id={t.id} className="relative">
               <div className="relative aspect-[16/8] min-h-[480px] overflow-hidden bg-ink">
-                <Picture src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover" />
+                <Picture src={t.image} alt={t.title} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(14,15,17,.85) 0%, rgba(14,15,17,.4) 60%, rgba(14,15,17,0) 100%)" }} />
                 <div className="absolute inset-0 flex items-center">
                   <div className="container-x">
@@ -76,7 +76,7 @@ export default function ServicesPage() {
           <Section key={t.id} id={t.id} className={i % 4 === 0 ? "bg-cream/40" : ""}>
             <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${reverse ? "lg:[&>:first-child]:order-2" : ""}`}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-cream">
-                <Picture src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover" />
+                <Picture src={t.image} alt={t.title} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.18em] text-muted mb-4 tabular">{`0${i + 1}`}</div>

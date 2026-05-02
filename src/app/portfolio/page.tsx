@@ -28,7 +28,7 @@ export default function PortfolioPage() {
     <>
       <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
-          <Picture src={PROJECTS[8].image} alt="" loading="eager" className="w-full h-full object-cover opacity-35" />
+          <Picture src={PROJECTS[8].image} alt="" loading="eager" fetchPriority="high" width={1920} height={900} className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
         <div className="container-x relative">

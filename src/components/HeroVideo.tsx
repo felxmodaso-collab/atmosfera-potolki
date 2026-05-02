@@ -63,6 +63,9 @@ export default function HeroVideo() {
         src="/images/hero/main.jpg"
         alt=""
         loading="eager"
+        fetchPriority="high"
+        width={1920}
+        height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       />
       {enableVideo && (
