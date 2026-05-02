@@ -39,7 +39,7 @@ import Quiz from "./Quiz";
 const LS_KEY = "atm_quiz_v3";
 const SS_KEY = "atm_quiz_session_v3";
 const DISMISS_DAYS = 7;
-const TIMER_MS = 25_000;
+const TIMER_MS = 0;
 const SCROLL_THRESHOLD = 0.55;
 
 type Visibility = "hidden" | "teaser" | "open" | "minimized";
