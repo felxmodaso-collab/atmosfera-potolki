@@ -20,8 +20,8 @@ const config: Config = {
         gold: "#D4A857",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["'Cormorant Garamond'", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       fontSize: {
         mega: ["clamp(3rem, 7vw, 7rem)", { lineHeight: "0.95", letterSpacing: "-0.025em" }],

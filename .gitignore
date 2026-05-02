@@ -4,3 +4,9 @@ out
 *.log
 .DS_Store
 .env*.local
+audit_2026-05-02/
+screenshots/
+_screenshot.mjs
+inspect*.js
+gen.log
+generate_images*.py

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Calendar } from "lucide-react";
+import { Menu, X, Phone, Calendar, MapPin, Clock, ShieldCheck, FileSignature } from "lucide-react";
 import { COMPANY, NAV } from "@/lib/data";
 import { useContactModal } from "./ContactProvider";
 
@@ -13,14 +13,19 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/" || pathname === "";
   const [scrolled, setScrolled] = useState(!isHome);
+  const [stripCollapsed, setStripCollapsed] = useState(!isHome);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isHome) {
       setScrolled(true);
+      setStripCollapsed(true);
       return;
     }
-    const onScroll = () => setScrolled(window.scrollY > 32);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 32);
+      setStripCollapsed(window.scrollY > 80);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -35,6 +40,28 @@ export default function Header() {
         borderBottom: scrolled ? "1px solid rgba(226,221,211,.6)" : "1px solid transparent",
       }}
     >
+      {/* Top info-strip — collapse on scroll */}
+      <div
+        className="hidden lg:block overflow-hidden transition-all duration-300 border-b"
+        style={{
+          height: stripCollapsed ? 0 : 36,
+          opacity: stripCollapsed ? 0 : 1,
+          background: scrolled ? "rgba(14,15,17,.04)" : "rgba(255,255,255,.06)",
+          borderColor: scrolled ? "rgba(226,221,211,.5)" : "rgba(255,255,255,.08)",
+        }}
+      >
+        <div className={`container-x h-9 flex items-center justify-between text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted" : "text-bg/70"}`}>
+          <div className="flex items-center gap-5">
+            <span className="flex items-center gap-1.5"><MapPin size={11} className="text-gold" /> Шоурум · ул. Тверская 15</span>
+            <span className="flex items-center gap-1.5"><Clock size={11} className="text-gold" /> Пн–Вс 9:00–22:00</span>
+          </div>
+          <div className="flex items-center gap-5">
+            <span className="flex items-center gap-1.5"><ShieldCheck size={11} className="text-gold" /> Гарантия 12 лет</span>
+            <span className="flex items-center gap-1.5"><FileSignature size={11} className="text-gold" /> Договор в день замера</span>
+          </div>
+        </div>
+      </div>
+
       <div className="container-x flex items-center justify-between py-4">
         <Link href="/" className="flex items-center gap-2.5 leading-none">
           <span className={`serif text-2xl tracking-tight transition-colors ${scrolled ? "text-ink" : "text-bg"}`}>АТМОСФЕРА</span>

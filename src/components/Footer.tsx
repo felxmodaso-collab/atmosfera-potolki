@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="serif text-4xl mb-2">АТМОСФЕРА</div>
           <div className="text-xs uppercase tracking-[0.22em] text-bg/45 mb-6">натяжные потолки · с 2014</div>
           <p className="text-bg/65 max-w-md leading-relaxed">
-            Премиум-уровень в каждом метре потолка. Цена в договоре, гарантия 12&nbsp;лет, монтаж за 1&nbsp;день. Москва и Московская область.
+            Натяжные потолки в Москве и МО с 2014 года. Цена фиксируется в договоре, гарантия 12&nbsp;лет на полотно, монтаж за 1&nbsp;день. Свой склад фактур на Тверской.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
             <a href={COMPANY.whatsapp} className="btn btn-wa !py-2.5 text-sm"><WhatsAppIcon size={16} /> WhatsApp</a>
@@ -49,7 +49,7 @@ export default function Footer() {
           <div>
             <h5 className="text-xs uppercase tracking-[0.2em] text-bg/45 mb-4">Сертификаты</h5>
             <div className="flex flex-wrap gap-3 text-xs text-bg/70">
-              <Cert icon={<ShieldCheck size={14} />} label="ИСО-9001" />
+              <Cert icon={<ShieldCheck size={14} />} label="ISO 9001" />
               <Cert icon={<Award size={14} />}       label="ГОСТ Р" />
               <Cert icon={<BadgeCheck size={14} />}  label="Эко-сертификат" />
               <Cert icon={<ShieldCheck size={14} />} label="Реестр ПДн" />

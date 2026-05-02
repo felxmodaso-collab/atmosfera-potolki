@@ -22,7 +22,7 @@ export default function ContactsPage() {
 
   return (
     <>
-      <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
+      <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
           <img src={img("/images/team/03-showroom.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
@@ -32,9 +32,27 @@ export default function ContactsPage() {
           <h1 className="serif text-hero max-w-3xl mb-6">
             Свяжитесь любым <em className="not-italic text-gold">удобным способом</em>
           </h1>
-          <p className="text-lg md:text-xl text-bg/75 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-bg/75 max-w-2xl leading-relaxed mb-12">
             Перезваниваем за 15 минут в рабочее время. Замер — бесплатно. Без напоминаний и спама после.
           </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 pt-8 border-t border-bg/15 tabular max-w-3xl">
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">≤ 15 мин</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">время отклика</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">0 ₽</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">замер на объекте</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">4.9/5</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">247 отзывов</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">Пн–Вс</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">9:00 — 22:00</div>
+            </div>
+          </div>
         </div>
       </section>
 

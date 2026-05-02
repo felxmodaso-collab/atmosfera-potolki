@@ -5,7 +5,7 @@ import { PRICE_OPTIONS, TYPES } from "@/lib/data";
 import { img } from "@/lib/img";
 
 export const metadata = {
-  title: "Цены · Прайс натяжных потолков — АТМОСФЕРА",
+  title: { absolute: "Цены · Прайс натяжных потолков — АТМОСФЕРА" },
   description: "Прозрачный прайс: цены за м², опции, пакетные предложения. Все цены — с монтажом, без скрытых доплат.",
 };
 
@@ -29,7 +29,7 @@ export default function PricesPage() {
       </section>
 
       <Section>
-        <SectionHeader title={<>Три пакета — <em className="not-italic text-accent">от базы до архитектурного</em></>} align="center" />
+        <SectionHeader title={<>Три пакета: <em className="not-italic text-accent">от базы до архитектурного</em></>} align="center" />
         <PriceTiers />
       </Section>
 

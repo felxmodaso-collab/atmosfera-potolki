@@ -5,14 +5,14 @@ import { PROJECTS } from "@/lib/data";
 import { img } from "@/lib/img";
 
 export const metadata = {
-  title: "Портфолио · Натяжные потолки — АТМОСФЕРА",
+  title: { absolute: "Портфолио · Натяжные потолки — АТМОСФЕРА" },
   description: "Реальные проекты: 12 кейсов с фото, описанием, типом потолка, площадью и бюджетом.",
 };
 
 export default function PortfolioPage() {
   return (
     <>
-      <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
+      <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
           <img src={img(PROJECTS[8].image)} alt="" aria-hidden className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,.35) 50%, rgba(14,15,17,.95) 100%)" }} />
@@ -22,9 +22,27 @@ export default function PortfolioPage() {
           <h1 className="serif text-hero max-w-3xl mb-6">
             <span className="tabular">3 800+</span> объектов. <em className="not-italic text-gold">Вот двенадцать.</em>
           </h1>
-          <p className="text-lg md:text-xl text-bg/75 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-bg/75 max-w-2xl leading-relaxed mb-12">
             Реальные проекты последних двух лет — Москва и Подмосковье. Кликните на карточку, чтобы увидеть детали и ракурсы.
           </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 pt-8 border-t border-bg/15 tabular max-w-3xl">
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">12</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">проектов в подборке</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">8 — 40 м²</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">диапазон площадей</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">28k — 215k ₽</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">бюджеты</div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-light leading-none">11</div>
+              <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">ЖК / районов МО</div>
+            </div>
+          </div>
         </div>
       </section>
 

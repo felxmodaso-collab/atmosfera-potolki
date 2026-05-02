@@ -89,10 +89,10 @@ export default function HeroCalc() {
       <div className="bg-ink text-bg -mx-7 md:-mx-8 -mb-7 md:-mb-8 px-7 md:px-8 py-6 mt-6">
         <div className="flex items-baseline justify-between mb-3">
           <span className="text-xs uppercase tracking-[0.18em] text-bg/60">Итого со скидкой</span>
-          <span className="text-xs text-bg/40 line-through">{total.toLocaleString("ru")} ₽</span>
+          <span className="text-xs text-bg/40 line-through tabular">{total.toLocaleString("ru")} ₽</span>
         </div>
         <div className="flex items-end justify-between gap-4">
-          <div className="serif text-5xl leading-none">{final.toLocaleString("ru")} ₽</div>
+          <div className="text-5xl font-light leading-none tabular tracking-tight">{final.toLocaleString("ru")} <span className="text-3xl text-gold">₽</span></div>
           <a href="#quiz" className="btn btn-accent !py-3 !px-5 text-sm">Заявка <ArrowRight size={15} /></a>
         </div>
       </div>

@@ -1,28 +1,28 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Clock, Sparkles, ChevronRight, Phone } from "lucide-react";
-import { COMPANY } from "@/lib/data";
+import { ArrowRight, ChevronRight, Sparkles } from "lucide-react";
 import { useContactModal } from "./ContactProvider";
 import HeroVideo from "./HeroVideo";
+import HeroCalc from "./HeroCalc";
 
 export default function Hero() {
   const { open } = useContactModal();
 
   return (
-    <section className="relative pt-32 lg:pt-40 pb-14 lg:pb-20 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
+    <section className="relative pt-32 lg:pt-40 pb-14 lg:pb-24 text-bg overflow-hidden" style={{ background: "#0E0F11" }}>
       <div className="absolute inset-0">
         <HeroVideo />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.45) 0%, rgba(14,15,17,.15) 45%, rgba(14,15,17,.6) 80%, rgba(14,15,17,.92) 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(14,15,17,.6) 0%, rgba(14,15,17,0) 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(14,15,17,.7) 0%, rgba(14,15,17,.2) 55%, rgba(14,15,17,0) 100%)" }} />
       </div>
 
-      <div className="container-x relative z-10 grid lg:grid-cols-[1.1fr_auto] gap-10 items-start">
-        <div className="max-w-3xl">
+      <div className="container-x relative z-10 grid lg:grid-cols-[1.05fr_440px] gap-10 lg:gap-14 items-start">
+        <div className="max-w-2xl">
           <div className="flex flex-wrap items-center gap-2 mb-7">
             <span className="badge badge-discount"><Sparkles size={12} /> Скидка 10% при заявке сегодня</span>
           </div>
 
-          <h1 className="text-[clamp(2.6rem,6.2vw,5.8rem)] leading-[0.96] tracking-[-0.025em] font-light mb-7">
+          <h1 className="text-[clamp(2.6rem,6vw,5.4rem)] leading-[0.96] tracking-[-0.025em] font-light mb-7">
             Натяжной потолок
             <br />
             <span className="serif italic text-gold font-normal">премиум-уровня</span>
@@ -30,45 +30,45 @@ export default function Hero() {
             <span className="font-medium">в Москве и МО</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-bg/75 max-w-xl mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-bg/75 max-w-xl mb-8 leading-relaxed">
             Замер бесплатно. Цена в договоре. Бесшовное полотно до 5,1 м, чистый монтаж за один день. Гарантия 12 лет.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 mb-12">
+          <div className="flex flex-wrap items-center gap-3 mb-10">
             <button onClick={() => open("measurer")} className="btn btn-gold !py-4 !px-8 text-base shadow-deep">
-              Вызвать замерщика бесплатно <ArrowRight size={18} />
+              Вызвать замерщика <ArrowRight size={18} />
             </button>
             <Link href="/calculator" className="btn !py-4 !px-7 text-base text-bg border border-bg/30 hover:bg-bg/10 transition">
-              Рассчитать стоимость <ChevronRight size={16} />
+              Полный калькулятор <ChevronRight size={16} />
             </Link>
+          </div>
+
+          <div className="grid grid-cols-3 gap-x-6 gap-y-3 max-w-xl pt-7 border-t border-bg/15 tabular">
+            <Stat value="11" suffix="лет" label="на рынке Москвы" />
+            <Stat value="3 800" suffix="+" label="установленных потолков" />
+            <Stat value="80+" label="ЖК Москвы и МО" />
           </div>
         </div>
 
-        <aside className="hidden lg:flex flex-col gap-2 self-end mt-32">
-          <Pillar icon={<ShieldCheck size={16} className="text-gold" />} text="Гарантия 12 лет" />
-          <Pillar icon={<Clock size={16} className="text-gold" />} text="Монтаж за 1 день" />
-          <Pillar icon={<Phone size={16} className="text-gold" />} text={COMPANY.phone} href={`tel:${COMPANY.phoneRaw}`} />
+        <aside className="hidden lg:block">
+          <HeroCalc />
         </aside>
       </div>
 
-      <div className="container-x relative z-10 mt-12 lg:mt-20">
-        <div className="grid grid-cols-3 gap-x-8 gap-y-3 max-w-3xl pt-8 border-t border-bg/15 tabular">
-          <Stat value="11" suffix="лет" label="на рынке Москвы" />
-          <Stat value="3 800" suffix="+" label="установленных потолков" />
-          <Stat value="4.9 / 5" label="средний рейтинг отзывов" />
-        </div>
-      </div>
+      <svg
+        className="absolute bottom-0 left-0 right-0 w-full block z-10 pointer-events-none"
+        viewBox="0 0 1440 64"
+        preserveAspectRatio="none"
+        height="60"
+        aria-hidden
+      >
+        <path
+          d="M0,28 C240,52 480,8 720,24 C960,40 1200,56 1440,30 L1440,64 L0,64 Z"
+          fill="#FFFFFF"
+        />
+      </svg>
     </section>
   );
-}
-
-function Pillar({ icon, text, href }: { icon: React.ReactNode; text: string; href?: string }) {
-  const inner = (
-    <span className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/10 text-sm whitespace-nowrap backdrop-blur">
-      {icon} <span className="text-bg/90">{text}</span>
-    </span>
-  );
-  return href ? <a href={href} className="block hover:bg-white/[0.12] rounded-full transition">{inner}</a> : inner;
 }
 
 function Stat({ value, suffix, label }: { value: string; suffix?: string; label: string }) {

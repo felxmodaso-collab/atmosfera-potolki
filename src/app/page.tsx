@@ -11,6 +11,9 @@ import FAQList from "@/components/FAQList";
 import Stats from "@/components/Stats";
 import Advantages from "@/components/Advantages";
 import CTABanner from "@/components/CTABanner";
+import TeamShowroom from "@/components/TeamShowroom";
+import ContractGuarantees from "@/components/ContractGuarantees";
+import CorniceStrip from "@/components/CorniceStrip";
 import { TYPES, PROJECTS } from "@/lib/data";
 
 export default function HomePage() {
@@ -19,33 +22,17 @@ export default function HomePage() {
       <Hero />
       <Marquee tone="light" />
 
-      <Section className="bg-cream/40">
+      <Section className="bg-cream/40 architectural-grid">
         <SectionHeader
           eyebrow="Цифры"
-          title={<>Без преувеличений — <em className="not-italic text-accent">просто факты</em></>}
+          title={<>Только <em className="not-italic text-accent">проверяемые</em> цифры</>}
         />
         <Stats />
       </Section>
 
-      <Section>
-        <SectionHeader
-          eyebrow="Типы потолков"
-          title={<>8 фактур <em className="not-italic text-accent">под любой интерьер</em></>}
-          sub="От классики матового до архитектурных решений с парящим контуром и фотопечатью."
-        />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <TypeCard t={TYPES[5]} large />
-          <TypeCard t={TYPES[3]} />
-          <TypeCard t={TYPES[1]} />
-          <TypeCard t={TYPES[0]} />
-          <TypeCard t={TYPES[7]} large />
-          <TypeCard t={TYPES[2]} />
-          <TypeCard t={TYPES[4]} />
-          <TypeCard t={TYPES[6]} />
-        </div>
-      </Section>
+      <CorniceStrip />
 
-      <Section className="bg-ink text-bg">
+      <Section className="bg-ink text-bg dim-orbs">
         <div className="flex items-end justify-between mb-10 lg:mb-14 gap-6 flex-wrap">
           <div className="max-w-2xl">
             <div className="eyebrow eyebrow-light mb-4">Портфолио</div>
@@ -63,13 +50,63 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="bg-cream/40">
+      <Section>
+        <CTABanner
+          title={<>Нравятся проекты? <em className="not-italic text-gold">Сделаем такой же</em></>}
+          sub="Замерщик приедет с фотокаталогом, посчитает смету по вашей комнате за 30 минут."
+          button="Записаться на замер"
+          variant="measurer"
+          badge="Замер 0 ₽ · перезвоним за 15 минут"
+        />
+      </Section>
+
+      <Section>
+        <SectionHeader
+          eyebrow="Типы потолков"
+          title={<>8 фактур <em className="not-italic text-accent">под любой интерьер</em></>}
+          sub="От классики матового до архитектурных решений с парящим контуром и фотопечатью."
+        />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <TypeCard t={TYPES[0]} large />
+          <TypeCard t={TYPES[1]} />
+          <TypeCard t={TYPES[2]} />
+          <TypeCard t={TYPES[5]} />
+          <TypeCard t={TYPES[7]} large />
+          <TypeCard t={TYPES[4]} />
+          <TypeCard t={TYPES[3]} />
+          <TypeCard t={TYPES[6]} />
+        </div>
+      </Section>
+
+      <CorniceStrip />
+
+      <Section className="bg-cream/40 architectural-grid">
         <SectionHeader
           eyebrow="Как мы работаем"
           title={<>Полный цикл <em className="not-italic text-accent">за 5–7 дней</em></>}
-          sub="От первого звонка до подписанного акта — без сюрпризов в смете и без затягивания сроков."
+          sub="От заявки до подписанного акта. Смета фиксируется в договоре, сроки — без переноса."
         />
         <Process />
+      </Section>
+
+      <Section>
+        <SectionHeader
+          eyebrow="Команда и шоурум"
+          title={<>Лица, с которыми вы будете <em className="not-italic text-accent">работать</em></>}
+          sub="Замерщик, бригадир, технолог производства, менеджер шоурума. Без сторонних подрядчиков."
+        />
+        <TeamShowroom />
+      </Section>
+
+      <CorniceStrip />
+
+      <Section className="bg-cream/40 architectural-grid">
+        <SectionHeader
+          eyebrow="Что в договоре"
+          title={<>Четыре пункта, <em className="not-italic text-accent">которые мы гарантируем</em></>}
+          sub="Не маркетинговые обещания, а условия с конкретными штрафами за нарушение."
+        />
+        <ContractGuarantees />
       </Section>
 
       <Section>
@@ -80,8 +117,19 @@ export default function HomePage() {
         <Advantages />
       </Section>
 
-      <Section className="bg-cream/40">
-        <SectionHeader eyebrow="Отзывы" title={<>Что говорят <em className="not-italic text-accent">клиенты</em></>} />
+      <Section>
+        <CTABanner
+          title={<>Готовы обсудить? <em className="not-italic text-gold">Перезвоним за 15 минут</em></>}
+          sub="Менеджер ответит на любые вопросы по фактурам, срокам и цене. Без обязательств."
+          button="Заказать звонок"
+          variant="callback"
+        />
+      </Section>
+
+      <CorniceStrip />
+
+      <Section className="bg-cream/40 architectural-grid">
+        <SectionHeader eyebrow="Отзывы" title={<>Что говорят <em className="not-italic text-accent">клиенты</em></>} sub="С привязкой к Яндекс.Картам и 2GIS — каждое имя проверяемое." />
         <Testimonials />
       </Section>
 

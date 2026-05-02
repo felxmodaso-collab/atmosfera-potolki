@@ -4,6 +4,20 @@ import { usePathname } from "next/navigation";
 import { COMPANY } from "@/lib/data";
 import { WhatsAppIcon, TelegramIcon, MaxIcon, PhoneIcon } from "./BrandIcons";
 
+type Channel = {
+  href: string;
+  bg: string;
+  icon: React.ReactNode;
+  label: string;
+};
+
+const allChannels: Channel[] = [
+  { href: COMPANY.whatsapp,             bg: "#25D366", icon: <WhatsAppIcon />, label: "WhatsApp"  },
+  { href: COMPANY.telegram,             bg: "#229ED9", icon: <TelegramIcon />, label: "Telegram"  },
+  { href: COMPANY.max,                  bg: "#B8946A", icon: <MaxIcon />,      label: "MAX"       },
+  { href: `tel:${COMPANY.phoneRaw}`,    bg: "#0E0F11", icon: <PhoneIcon />,    label: "Позвонить" },
+];
+
 export default function StickyWidget() {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
@@ -18,39 +32,58 @@ export default function StickyWidget() {
 
   if (!show) return null;
 
+  // Desktop — вертикальный стек справа со всеми каналами.
+  // Mobile — два самых востребованных канала над кнопкой «наверх».
   return (
-    <div className="hidden lg:flex fixed top-1/2 -translate-y-1/2 right-3 z-30 flex-col gap-2.5">
-      <Item href={COMPANY.whatsapp}        bg="#25D366" icon={<WhatsAppIcon size={22} />} label="WhatsApp" />
-      <Item href={COMPANY.telegram}        bg="#2AABEE" icon={<TelegramIcon size={22} />} label="Telegram" />
-      <Item href={COMPANY.max}             bg="#B8946A" icon={<MaxIcon size={22} />}      label="MAX" />
-      <Item href={`tel:${COMPANY.phoneRaw}`} bg="#0E0F11" icon={<PhoneIcon size={20} />}   label="Звонок" />
-    </div>
+    <>
+      <div className="hidden lg:flex fixed top-1/2 -translate-y-1/2 right-4 z-30 flex-col items-end gap-3">
+        {allChannels.map((c) => (
+          <Bubble key={c.label} channel={c} />
+        ))}
+      </div>
+      <div className="flex lg:hidden fixed bottom-20 right-3 z-30 flex-col items-end gap-2.5">
+        {[allChannels[0], allChannels[3]].map((c) => (
+          <Bubble key={c.label} channel={c} />
+        ))}
+      </div>
+    </>
   );
 }
 
-function Item({ href, bg, icon, label }: { href: string; bg: string; icon: React.ReactNode; label: string }) {
+function Bubble({ channel }: { channel: Channel }) {
   const [hover, setHover] = useState(false);
   return (
-    <a
-      href={href}
-      style={{
-        background: bg,
-        width: hover ? 168 : 48,
-        gridTemplateColumns: "1fr 48px",
-      }}
-      className="grid items-center h-12 text-white rounded-full shadow-deep transition-[width] duration-300 ease-out overflow-hidden will-change-[width] ring-1 ring-white/10"
+    <div
+      className="relative"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      aria-label={label}
     >
-      <span
-        className={`text-sm font-medium whitespace-nowrap pl-5 min-w-0 overflow-hidden transition-opacity duration-200 ${hover ? "opacity-100 delay-100" : "opacity-0"}`}
+      <a
+        href={channel.href}
+        target={channel.href.startsWith("http") ? "_blank" : undefined}
+        rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
+        aria-label={channel.label}
+        className="block w-12 h-12 rounded-full text-white ring-1 ring-white/15 flex items-center justify-center transition-transform duration-200 ease-out shadow-deep hover:scale-110"
+        style={{ background: channel.bg }}
       >
-        {label}
+        {channel.icon}
+      </a>
+      <span
+        className={[
+          "pointer-events-none absolute right-[60px] top-1/2 -translate-y-1/2",
+          "whitespace-nowrap text-sm font-medium px-3 py-1.5 rounded-full",
+          "bg-ink text-bg shadow-deep",
+          "transition-all duration-200 ease-out",
+          hover ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2",
+        ].join(" ")}
+        aria-hidden
+      >
+        {channel.label}
+        <span
+          className="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 rotate-45 bg-ink"
+          aria-hidden
+        />
       </span>
-      <span className="w-12 h-12 flex items-center justify-center">
-        {icon}
-      </span>
-    </a>
+    </div>
   );
 }

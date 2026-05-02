@@ -6,28 +6,36 @@ import { ADVANTAGES, COMPANY } from "@/lib/data";
 import { img } from "@/lib/img";
 
 export const metadata = {
-  title: "О компании АТМОСФЕРА · Натяжные потолки в Москве",
+  title: { absolute: "О компании АТМОСФЕРА · Натяжные потолки в Москве" },
   description: "Бригады, оборудование, гарантия 12 лет. Больше 3 800 объектов в Москве и Подмосковье с 2014 года.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      <section className="relative pt-40 pb-20 bg-ink text-bg overflow-hidden">
+      <section className="relative pt-40 pb-24 bg-ink text-bg overflow-hidden">
         <div className="absolute inset-0">
           <img src={img("/images/team/03-showroom.jpg")} alt="" aria-hidden className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,15,17,.55) 0%, rgba(14,15,17,.3) 50%, rgba(14,15,17,.95) 100%)" }} />
         </div>
-        <div className="container-x relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-end">
-          <div>
-            <div className="eyebrow eyebrow-light mb-5">О компании</div>
-            <h1 className="serif text-hero max-w-3xl">
-              Делаем то, в чём мы лучше всех — <em className="not-italic text-gold">натяжные потолки</em>.
-            </h1>
+        <div className="container-x relative">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-end mb-14">
+            <div>
+              <div className="eyebrow eyebrow-light mb-5">О компании</div>
+              <h1 className="serif text-hero max-w-3xl">
+                Делаем то, в чём мы <em className="not-italic text-gold">лучше всех</em>: натяжные потолки.
+              </h1>
+            </div>
+            <p className="text-lg text-bg/75 max-w-md leading-relaxed">
+              Не делаем «всё подряд». Не строим квартиры под ключ, не продаём двери и не штукатурим. Только потолки — и потому делаем их лучше тех, у кого это побочный сервис.
+            </p>
           </div>
-          <p className="text-lg text-bg/75 max-w-md leading-relaxed">
-            Не делаем «всё подряд». Не строим квартиры под ключ, не продаём двери и не штукатурим. Только потолки — и потому делаем их лучше тех, у кого это побочный сервис.
-          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 pt-8 border-t border-bg/15 tabular max-w-3xl">
+            <HeroStat value="2014" label="год основания" />
+            <HeroStat value="3 800+" label="объектов" />
+            <HeroStat value="22" label="мастера в штате" />
+            <HeroStat value="80+" label="ЖК Москвы и МО" />
+          </div>
         </div>
       </section>
 
@@ -80,7 +88,7 @@ export default function AboutPage() {
           <Field label="Гарантия на полотно" value={COMPANY.guarantee} />
           <Field label="Гарантия на монтажные работы" value="5 лет" />
           <Field label="Реализованных проектов" value={COMPANY.projects} />
-          <Field label="Сертификация" value="ИСО-9001, ГОСТ Р, экологический сертификат" />
+          <Field label="Сертификация" value="ISO 9001, ГОСТ Р, экологический сертификат" />
         </div>
       </Section>
 
@@ -101,6 +109,15 @@ function Field({ label, value }: { label: string; value: string }) {
     <div className="flex flex-col">
       <span className="text-xs uppercase tracking-[0.18em] text-muted mb-1.5">{label}</span>
       <span className="font-medium tabular">{value}</span>
+    </div>
+  );
+}
+
+function HeroStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <div className="text-3xl md:text-4xl font-light leading-none">{value}</div>
+      <div className="text-[11px] uppercase tracking-[0.18em] text-bg/55 mt-2">{label}</div>
     </div>
   );
 }
